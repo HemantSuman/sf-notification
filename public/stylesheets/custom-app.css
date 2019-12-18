@@ -1,0 +1,78 @@
+body {
+	background: #f4f6f8;
+}
+.moxo-wrapper {
+    border: solid 1px #ccc;
+}
+
+.tabs .tab a {
+	text-transform: capitalize;
+	color: #637381;
+	font-weight: 600;
+    font-size: 16px;
+}
+.tabs .tab a.active, .tabs .tab a:hover {
+	color: #5c6ac4;
+}
+.tabs .indicator {
+    background-color: #5c6ac4;
+}
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+	background-color: #5c6ac4;
+	color: #ffffff;
+}
+.tabs .indicator {
+	display: none;
+}
+
+.moxo-block {
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
+    background: #ffffff;
+    border-radius: 2px;
+}
+.moxo-header {
+    background: #5c6ac4;
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 2px;
+	margin-bottom: 20px;
+}
+.moxo-header span {
+    font-size: 18px;
+}
+.moxo-block-inner {
+    padding: 0 20px;
+	background: #ffffff;
+}
+
+.switch {
+    padding: 0 0 20px 0;
+}
+.switch span {
+    font-size: 16px;
+}
+.switch label {
+    cursor: pointer;
+    font-size: 14px;
+    color: #000000;
+    background: #f4f6f8;
+    padding: 8px;
+    border-radius: 30px;
+    font-weight: 500;
+}
+
+.radio {
+	margin-bottom: 12px;
+}
+.radio span {
+    font-size: 16px;
+}
+.radio label{    
+	cursor: pointer;
+    font-size: 16px;
+    color: #444444;  
+    padding: 5px;
+}
+
+
+

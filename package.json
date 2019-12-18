@@ -1,0 +1,27 @@
+{
+  "name": "ex",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "browserify": "^16.5.0",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "ejs": "~2.5.7",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.1",
+    "nonce": "^1.0.4",
+    "polaris": "^1.2.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "sequelize": "^4.44.3",
+    "tedious": "^6.6.2"
+  }
+}

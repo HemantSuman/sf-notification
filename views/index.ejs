@@ -1,0 +1,146 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="/stylesheets/materialize.min.css"  media="screen,projection"/>
+      
+      <link type="text/css" rel="stylesheet" href="/stylesheets/custom-app.css"  media="screen,projection"/>
+      
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      
+      <script type="text/javascript" src="/js/jquery.min.js"></script>
+      <script type="text/javascript" src="/js/custom-app.js"></script>
+    
+      
+      
+    </head>
+    
+    <body>
+      
+      <div class="container moxo-wrapper">
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs">
+              <li class="tab col s3"><a href="#test1" class="active" >Dashboard</a></li>
+              <li class="tab col s3"><a href="#test2">App Setup</a></li>
+              <li class="tab col s3"><a href="#test3">FAQ's</a></li>
+              <li class="tab col s3"><a href="#test4">Pricing & Plans</a></li>
+            </ul>
+          </div>
+          
+          <div id="test1" class="col s12">
+          
+            <div class="row">
+              <div class="col s12">
+                <div class="moxo-block">
+                  <div class="moxo-header">
+                      <span>General Setting</span>
+                  </div>
+                  <div class="moxo-block-inner">
+                    <div class="switch">
+                      <span>Enable/Disable Notification Bar</span>
+                      <label>
+                        Off
+                        <input type="checkbox">
+                        <span class="lever"></span>
+                        On
+                      </label>
+                    </div>
+                    
+                    <div class="radio">								
+                      <span>Position Notification Bar</span>
+                      <label>
+                        <input name="group1" type="radio" checked />
+                        <span>Top</span>
+                      </label>
+                      <label>
+                        <input name="group1" type="radio"/>
+                        <span>Bottom</span>
+                      </label>								
+                                                
+                    </div>
+                    
+                    <div class="radio">								
+                      <span>Top Sticky</span>
+                      <label>
+                        <input name="group2" type="radio"/>
+                        <span>Fixed</span>
+                      </label>								
+                      <label>
+                        <input name="group2" type="radio" checked />
+                        <span>Scroll</span>
+                      </label>													
+                    </div>
+                    
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                      <i class="material-icons right">send</i>
+                      </button>
+                    
+                  </div>	
+                  
+                </div>
+              </div>
+            </div>
+                    
+            <div class="row">
+              <div class="col s12">
+                <div class="moxo-block">
+                  <div class="moxo-header">
+                      <span>Text Configurator</span>
+                  </div>
+                  <div class="moxo-block-inner">								
+                    <div class="title-text">
+                      <span> Title </span>
+                      <input placeholder="Title"  type="text" class="validate">
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s3">
+                        <span>Title Font-Family</span>
+                        <select class="browser-default">
+                          <option value="" disabled selected>Choose Font-Family</option>
+                          <option value="1">Times</option>
+                          <option value="2">Courier New</option>
+                          <option value="3">Arial</option>
+                          <option value="4">open snas </option>
+                        </select>									
+                      </div>
+                      <div class="input-field col s3">
+                        <span>Title Font-size</span>
+                        <select class="browser-default">
+                          <option value="" disabled selected>Choose Font-Size</option>
+                          <option value="1">12</option>
+                          <option value="2">13</option>
+                          <option value="3">14</option>
+                          <option value="4">15</option>
+                          <option value="4">16</option>
+                          <option value="5">17</option>
+                          <option value="6">18</option>
+                          <option value="7">19</option>
+                          <option value="8">20</option>
+                        </select>									
+                      </div>
+                      <div class="input-field col s3">
+                        <span>Title text Color</span>
+                        
+                      </div>
+                      <div class="input-field col s3">
+                        <span>Title Background Color</span>															
+                      </div>	
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+              </div>
+            </div>				
+          </div>
+          
+        </div>
+      </div>
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="/js/materialize.min.js"></script>
+    </body>
+    </html>
