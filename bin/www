@@ -14,20 +14,20 @@ var fs = require('fs')
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '443');
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
  * Create HTTPS server.
  */
 
-var server = https.createServer({
+var server = http.createServer({
   /*key: fs.readFileSync('/etc/pki/tls/private/localhost.key', 'utf8'),
   cert: fs.readFileSync('/etc/ssl/certs/localhost.crt', 'utf8'),
   ca:fs.readFileSync('/etc/ssl/certs/ca-bundle.crt', 'utf8')*/
-  key: fs.readFileSync('/var/cpanel/ssl/apache_tls/moxoapps.com/combined'),
-  cert: fs.readFileSync('/var/cpanel/ssl/apache_tls/moxoapps.com/combined'),
-  ca:fs.readFileSync('/var/cpanel/ssl/apache_tls/moxoapps.com/combined')
+  // key: fs.readFileSync('/var/cpanel/ssl/apache_tls/moxoapps.com/combined'),
+  // cert: fs.readFileSync('/var/cpanel/ssl/apache_tls/moxoapps.com/combined'),
+  // ca:fs.readFileSync('/var/cpanel/ssl/apache_tls/moxoapps.com/combined')
 },app);
 
 /**
