@@ -9,12 +9,12 @@ const nonce = require('nonce')();
 const querystring = require('querystring');
 const request = require('request-promise');
 var modelName = 'User';
-console.log('process.env.SHOPIFY_API_KEY',process.env.SHOPIFY_API_KEY)
+console.log('process.env.SHOPIFY_API_KEY', process.env)
 const apiKey = process.env.SHOPIFY_API_KEY;
 const apiSecret = process.env.SHOPIFY_API_SECRET;
 // const accessTokenKey = process.env.ACCESS_TOKEN;
 const scopes = 'write_script_tags';
-const forwardingAddress = "https://0a14bfb7.ngrok.io";
+const forwardingAddress = process.env.SITE_URL;
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
