@@ -14,7 +14,7 @@ const apiKey = process.env.SHOPIFY_API_KEY;
 const apiSecret = process.env.SHOPIFY_API_SECRET;
 // const accessTokenKey = process.env.ACCESS_TOKEN;
 const scopes = 'write_script_tags';
-const forwardingAddress = "https://d8dbf920.ngrok.io";
+const forwardingAddress = "https://0a14bfb7.ngrok.io";
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {

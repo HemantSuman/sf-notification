@@ -1,32 +1,40 @@
 body {
 	background: #f4f6f8;
+	font-size: 14px;
+	font-weight: 400;
+	font-family: 'Noto Sans', sans-serif;
+}
+
+img {
+    max-width: 100%;
+	height: auto;
+}
+
+.material-icons {
+    vertical-align: sub;
+    font-size: 105%;
+}
+
+.copy-block{
+	display: grid;
+	text-align: center;
 }
 .moxo-wrapper {
     border: solid 1px #ccc;
+    overflow: hidden;
+	padding-top: 15px;
+	margin-bottom: 6.85rem;
+	position: relative;
+    z-index: 0;
 }
 
 .tabs .tab a {
 	text-transform: capitalize;
-	color: #637381;
 	font-weight: 600;
-    font-size: 16px;
-}
-.tabs .tab a.active, .tabs .tab a:hover {
-	color: #5c6ac4;
-}
-.tabs .indicator {
-    background-color: #5c6ac4;
-}
-.tabs .tab a:focus, .tabs .tab a:focus.active {
-	background-color: #5c6ac4;
-	color: #ffffff;
-}
-.tabs .indicator {
-	display: none;
 }
 
 .moxo-block {
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
     background: #ffffff;
     border-radius: 2px;
 }
@@ -34,22 +42,13 @@ body {
     background: #5c6ac4;
     color: #ffffff;
     padding: 10px 22px;
-    border-radius: 2px;
-	margin-bottom: 20px;
 }
 .moxo-header span {
     font-size: 18px;
 }
 .moxo-block-inner {
-    padding: 0 20px;
+    padding: 20px;
 	background: #ffffff;
-}
-
-.switch {
-    padding: 0 0 20px 0;
-}
-.switch span {
-    font-size: 16px;
 }
 .switch label {
     cursor: pointer;
@@ -59,20 +58,519 @@ body {
     padding: 8px;
     border-radius: 30px;
     font-weight: 500;
+	display: inline-block;
 }
 
 .radio {
 	margin-bottom: 12px;
 }
-.radio span {
-    font-size: 16px;
-}
+
 .radio label{    
 	cursor: pointer;
-    font-size: 16px;
     color: #444444;  
     padding: 5px;
 }
 
+.tagline {
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.moxo_barText {
+	position: relative;
+    padding: .434rem 1rem;
+    background-color: #fff;
+    border: .1rem solid #c4cdd5;
+    border-radius: .3rem;
+    color: #31373d;
+    display: block;
+    width: 100%;
+    line-height: 1.7;
+    min-width: 6.2rem;
+    vertical-align: baseline;
+    height: auto;
+    margin: 0;
+    max-width: 100%;
+    box-shadow: 0 0 0 1px transparent, 0 1px 0 0 rgba(22, 29, 37, 0.05);
+    box-sizing: border-box;
+    -webkit-transition: box-shadow 0.2s cubic-bezier(0.64, 0, 0.35, 1);
+    transition: box-shadow 0.2s cubic-bezier(0.64, 0, 0.35, 1);
+}
+
+.message-text {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.message-text button {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    margin-left: 1rem;
+}
+
+/* input:not([type]) */
+.font-select > a,
+input:not([type]), input[type="email"], input[type="number"], input[type="search"],
+input[type="text"], input[type="tel"], input[type="url"],
+input[type="password"], input[type="date"], textarea, select {
+    position: relative;
+	z-index: 1;
+    padding: .434rem 1rem;
+    background-color: #fff;
+    border: .1rem solid #c4cdd5;
+    border-radius: .3rem;
+    color: #31373d;
+    display: block;
+    width: 100%;
+    min-width: 6.2rem;
+    vertical-align: baseline;
+    height: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    -webkit-transition: box-shadow 0.2s cubic-bezier(0.64, 0, 0.35, 1);
+    transition: box-shadow 0.2s cubic-bezier(0.64, 0, 0.35, 1);
+}
+
+input[type="email"], input[type="number"], input[type="search"],
+input[type="text"], input[type="tel"], input[type="url"],
+input[type="password"], input[type="radio"], input[type="checkbox"],
+input[type="date"], textarea, select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input[type="email"], input[type="number"], input[type="search"],
+input[type="text"], input[type="tel"], input[type="url"],
+input[type="password"], input[type="date"], textarea, select {
+    min-height: 2.4rem;
+}
+
+.font-select > a:focus, .font-select-active > a, .moxo_barText:focus,
+input:not([type]), input[type="email"]:focus, input[type="number"]:focus,
+input[type="search"]:focus, input[type="text"]:focus,
+input[type="tel"]:focus, input[type="url"]:focus,
+input[type="password"]:focus, input[type="date"]:focus,
+textarea:focus, select:focus {
+    border-color: #5c6ac4;
+    outline: none;
+}
+
+input:not([type]).jscolor {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+	display: inline-block;
+}
+
+.moxo-element {
+    margin-right: .5rem;
+}
+
+/* File Upload Start */
+
+.file {
+    align-items: stretch;
+    display: inline-flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.file-label {
+    align-items: stretch;
+    display: flex;
+    cursor: pointer;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: relative;
+}
+
+.file-input {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    outline: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.file-cta, .file-name {
+    border-color: #dbdbdb;
+    border-radius: 4px;
+    font-size: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    white-space: nowrap;
+}
+
+.file-cta {
+	-moz-appearance: none;
+    -webkit-appearance: none;
+    align-items: center;
+    border: 1px solid transparent;
+    box-shadow: none;
+    display: inline-flex;
+    height: 3em;
+	font-weight: 600;
+    justify-content: flex-start;
+    line-height: 1.5;
+    padding-bottom: calc(.5em - 1px);
+    padding-top: calc(.5em - 1px);
+    position: relative;
+    vertical-align: top;	
+	background-color: #5c6ac4;
+    border-color: transparent;
+    color: #fff;
+}
+
+.file:hover .file-cta {
+    background-color: #606eca;
+    border-color: transparent;
+    color: #fff;
+}
+
+.file-icon {
+    align-items: center;
+    display: flex;
+    height: 1em;
+    justify-content: center;
+    margin-right: .5em;
+    width: 1em;
+}
+
+/* File Upload End */
+
+
+/* Preview CSS Start */
+
+.preview-card {
+	width: 100%;
+	border: 0;
+	border-radius: 0;
+	display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+	align-items: center;
+	padding: 20px 0 16px 0;
+	background: #fff;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,.15);
+	z-index: 1000;
+}
+
+.preview-card p {
+    position: absolute;
+    top: 3px;
+    left: 1%;
+    margin: 0;
+    color: #aaa;
+    font-size: .75rem;
+    z-index: 1;
+}
+
+.preview-card .moxo_bar {
+	width: 98%;
+}
+
+.preview-card.top {
+	top:0;
+}
+
+.preview-card.bottom {
+	bottom:0;
+}
+
+.preview-card.fixed,
+.moxo_bar.fixed {
+	position: fixed;
+}
+
+.preview-card .moxo_bar.fixed {
+	position: relative;
+}
+
+.preview-card.fixed+.moxo-wrapper {
+    padding-top: 8.85rem;
+}
+
+/* Preview CSS End */
+
+
+/* Notification CSS Start */
+
+.moxo_bar {
+    width: 100%;
+    color: #fff;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    margin: auto;
+	text-align: center;
+    z-index: 0;
+	min-height: 50px;
+}
+
+.moxo_holder {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    padding: .5em 0;
+}
+
+.moxo_message {
+	font-weight: 500;
+    -webkit-font-smoothing: auto;
+    word-wrap: break-word;
+    max-width: 88%;
+    display: inline-block;
+    margin: .5em;
+    padding: .5em 1em;
+    line-height: 1.4em;
+}	
+.moxo_message_cta {
+	max-width: 70%;
+	text-align: left;
+}
+.moxo_btn_holder {
+	display: inline;
+	margin-left: 15px;
+}
+
+.moxo_title {
+	font-size: 16px;
+    font-weight: 700;
+	margin: .5em;
+	padding: .3125em 1em;
+    letter-spacing: .05em;
+    display: inline-block;
+    background-color: #f24259;
+    position: relative;
+    z-index: 0;
+}
+
+.shape_1:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 12px solid #5c6ac4;
+    border-right: 0 solid transparent;
+    border-bottom: 10px solid transparent;
+    border-top: 10px solid transparent;
+    top: 34%;
+    right: -12px;
+}
+
+.moxo_bar_btn {
+	color: #fff;
+    padding: 0px 18px;
+    text-align: center;
+    display: inline-table;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 2;
+    font-size: 14px;
+    vertical-align: middle;
+    touch-action: manipulation;
+	border-radius: 5px;
+}
+	
+.outline  {
+    border-width: 2px;
+	border-style: solid;
+	border-color: #f24259;
+}
+
+.fill, .minimal {
+    background: #f24259;
+}
+
+.fill:hover, .fill:focus  {
+    opacity: 0.90;
+}
+
+.moxo_closebar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 12px;
+    margin: auto 0;
+    display: block;
+    font-size: 13px;
+    text-align: center;
+    padding: 0px 5px;
+    height: 26px;
+    line-height: 1.95;
+    cursor: pointer;
+}
+
+.countdown, .moxo-textbar, .moxo_btn_holder {
+	position: relative;
+    display: inline-block;
+}
+
+.countdown {
+	padding: .5em 0;
+    margin: .5em;
+    text-align: center;
+}
+
+.countdown div {
+	display: inline-block;
+    position: relative;
+    top: -.25em;
+    width: 1.8em;
+    margin: 0 .1em;
+}
+
+.countdown_label {
+	position: absolute;
+    bottom: -1.25em;
+    left: 0;
+    width: 3em;
+    font-size: .6em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.countdown div:last-child {
+    margin-right: 0px;
+}
+
+.style1 .timer:not(.sec):after {
+    position: absolute;
+    right: -.25em;
+    content: ":";
+}
+
+.bg-section {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    height: 101%;
+	top: 0px;
+	background-color:#5c6ac4;
+    opacity: 1;
+}
+
+.bg-section img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.editor_bottom_bar {
+    position: fixed;
+    z-index: 40;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 5px;
+    background-color: #fff;
+    box-shadow: 0 -8px 16px rgba(0,0,0,.15);
+}
+
+.editor_bottom_bar .moxo_btn {
+    -ms-flex: 1 0 30%;
+    flex: 1 0 30%;
+    margin: 5px;
+}
+
+.moxo_btn {
+	position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 12px;
+	color: #fff;
+	background-color: #5c6ac4;
+    font-weight: 600;
+    letter-spacing: .5px;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+	outline: 0;
+    box-shadow: none;
+}
+
+.moxo_outlined, [class*=moxo_outlined_] {
+    background-color: #fff;
+    border-color: #babdc4;
+}
+
+.moxo_outlined {
+	color: #838791;
+}
+
+.moxo_outlined_negative {
+    color: #f24259;
+}
+
+.moxo_btn:hover, .moxo_btn:focus {
+	opacity: .95;
+}
+
+@media (min-width:768px){
+	.editor_bottom_bar .moxo_btn {
+		-ms-flex: 0 1 auto;
+		flex: 0 1 auto;
+	}
+	.editor_bottom_bar .moxo_publish {
+		margin-left: auto;
+	}
+}
+
+@media (max-width:767px){
+	.countdown {
+		margin: 0px 5px;
+	}
+	.moxo-element {
+		margin: 0 0 .5rem 0;
+		display: block;
+		white-space: nowrap;
+	}
+	.select-wrapper .caret {
+		display: none;
+	}
+	.moxo_message_cta {
+		width: 60%;
+		text-align: left;
+		margin-left: 0.5em;
+	}
+	.moxo_message {
+		font-weight: 400;
+		-webkit-font-smoothing: auto !important;
+		word-wrap: break-word;
+		display: inline-table;
+		vertical-align: middle;
+		line-height: 1.35em;
+	}
+	.moxo_btn_holder {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.moxo_title {
+		display: inline-block;
+		margin: 0;
+	}
+	.moxo_bar {
+		width: 92%;
+	}
+}
+
+/* Notification CSS End */
 
 
