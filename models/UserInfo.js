@@ -19,7 +19,7 @@ module.exports = function (sequelize, DataTypes) {
                 // }
             },
             charge_id: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.STRING,
                 // validate: {
                 //     notEmpty: {
                 //         msg: i18n_Validation.__('required')
@@ -35,7 +35,7 @@ module.exports = function (sequelize, DataTypes) {
                 // }
             },
             api_client_id: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.STRING,
                 // validate: {
                 //     notEmpty: {
                 //         msg: i18n_Validation.__('required')
