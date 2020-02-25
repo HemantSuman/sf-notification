@@ -1,4 +1,4 @@
-const dotenv = require('dotenv').config();
+const dotenv = require('dotenv').config({path: "../.env"});
 var models = require('../models');
 var express = require('express');
 var router = express.Router();
