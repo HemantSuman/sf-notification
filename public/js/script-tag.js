@@ -26,7 +26,7 @@
     console.log('Shopify@!@!', Shopify);
     $(document).ready(function(){  
       $.ajax({
-        url: 'https://moxoapps.com/sf-notification/shopify/load-notification',
+        url: '//moxoapps.com/sf-notification/shopify/load-notification',
         type: 'GET',
         data: {shop: Shopify.shop}
       })

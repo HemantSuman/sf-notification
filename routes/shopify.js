@@ -300,7 +300,7 @@ router.get('/load-notification', function (req, res, next) {
 
   models['Setting'].getNotificationDiv(req, function (results) {
     console.log(results)
-    res.render('notification-div', { settingsData:settingsData });
+    res.render('notification-div', { notificationData:notificationData });
     // res.json(results.status);
   });
 });
