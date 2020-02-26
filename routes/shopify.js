@@ -185,7 +185,7 @@ router.get('/callback', (req, res) => {
                         json: true,
                         resolveWithFullResponse: true,//added this to view status code
                         headers: {
-                            'X-Shopify-Access-Token': results3.access_token,
+                            'X-Shopify-Access-Token': accessToken,
                             'content-type': 'application/json'
                         },
                         body: new_script3
