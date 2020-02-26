@@ -172,5 +172,41 @@ module.exports = function (sequelize, DataTypes) {
             res(results);
         });
     };
+    myModel.getFirstValues = function (req, res) {
+
+        var users_info_settings = myModel.hasMany(sequelize.models.Setting, {foreignKey: 'user_info_id'});
+        myModel.findOne(
+                {
+                    where: req.where,
+                    include: [
+                        {association: users_info_settings, include: [], required: false},
+                    ]
+                }
+            )
+            .then(function (results) {
+                // console.log('model get first user', results.dataValues)
+                // results.status = true;
+                res(results);                    
+            })
+            .catch(function (err) {
+
+                var errors = err;
+                errors.status = false;
+                console.log(errors)
+                res(errors);
+            });
+    };
+    myModel.createScript = function (req, res) {
+        let shop = req.body.shop;
+        req.where = {'shop_name':shop};
+        this.getAccessToken(req, function(aa){
+            console.log(aa)
+        })
+        // myModel.destroy({where: req.where}).then(function (data) {
+        //     var results = {};
+        //     results.status = true;
+        //     res(results);
+        // });
+    };
     return myModel;
 };

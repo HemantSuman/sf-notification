@@ -91,8 +91,6 @@ router.get('/callback', (req, res) => {
     .then((accessTokenResponse) => {
 
       let accessToken = accessTokenResponse.access_token;
-      console.log('accessTokenaccessTokenaccessToken', accessToken);
-
       req.body = {
                   shop_name: shop,
                   access_token: accessToken
@@ -155,8 +153,6 @@ router.get('/callback', (req, res) => {
               request.post(options1)
                 .then((shopResponse1) => {
                   
-                  console.log('shopResponse1.body 1111', shopResponse1.body)     
-
                   req.body = { 
                       charge_id: shopResponse1.body.recurring_application_charge.id,
                       name: shopResponse1.body.recurring_application_charge.name,
@@ -173,7 +169,38 @@ router.get('/callback', (req, res) => {
                     };
                   req.where = {shop_name: shop};
                   models['UserInfo'].updateAllValues(req, function (results1) {
-                    res.redirect(shopResponse1.body.recurring_application_charge.confirmation_url); 
+
+
+                    const shopRequestUrl3 = 'https://' + shop + '/admin/api/2019-10/script_tags.json';
+                    let new_script3 = {
+                      "script_tag": {
+                        "event": "onload",
+                        "src": forwardingAddress+"/js/script-tag.js"
+                      }
+                    };
+
+                    let options3 = {
+                        method: 'POST',
+                        uri: shopRequestUrl3,
+                        json: true,
+                        resolveWithFullResponse: true,//added this to view status code
+                        headers: {
+                            'X-Shopify-Access-Token': results3.access_token,
+                            'content-type': 'application/json'
+                        },
+                        body: new_script3
+                    };
+
+                    request.post(options3)
+                    .then((shopResponse3) => {
+                      console.log('shopResponse3',shopResponse3);
+                      res.redirect(shopResponse1.body.recurring_application_charge.confirmation_url); 
+                      // res.json(shopResponse3);
+                    })
+                    .catch((error) => {
+                      console.log('errorerror',error)
+                      res.status(error.statusCode).send(error.error.error_description);
+                    });                    
                   });
                   // res.json(shopResponse);
                 })
@@ -188,33 +215,11 @@ router.get('/callback', (req, res) => {
             console.log('errorerror',error)
             res.status(error.statusCode).send(error.error.error_description);
           });
-
-
       }); 
-      // const shopRequestUrl = 'https://' + shop + '/admin/api/2019-10/products.json';
-      // const shopRequestHeaders = {
-      //   'X-Shopify-Access-Token': accessToken,
-      // };
-
-      // request.get(shopRequestUrl, { headers: shopRequestHeaders })
-      // .then((shopResponse) => {
-      //   // res.send({'hemant':'value'})
-      //   res.end(shopResponse);
-      // })
-      // .catch((error) => {
-      //   res.status(error.statusCode).send(error.error.error_description);
-      // });
-      // TODO
-      // Use access token to make API call to 'shop' endpoint
     })
     .catch((error) => {
       res.status(error.statusCode).send(error.error.error_description);
     });
-
-    // TODO
-    // Validate request is from Shopify
-    // Exchange temporary code for a permanent access token
-      // Use access token to make API call to 'shop' endpoint
   } else {
     res.status(400).send('Required parameters missing');
   }
@@ -268,7 +273,6 @@ router.get('/get-web-hooks', function (req, res, next) {
 router.get('/delete-web-hooks', function (req, res, next) {
   let shop = req.query.shop;
   let webhook_id = req.query.webhook_id;
-  console.log('DDDDDDDdd')
   req.where = {'shop_name':shop};
   models['UserInfo'].getAccessToken(req, function (results) {
     // console.log('resultsresults',results.access_token)
@@ -287,6 +291,18 @@ router.get('/delete-web-hooks', function (req, res, next) {
       });   
   });
      
+});
+
+router.get('/load-notification', function (req, res, next) {
+  console.log(req.query);
+  let shop = req.query.shop;
+  req.where = {'shop_name':shop};
+
+  models['Setting'].getNotificationDiv(req, function (results) {
+    console.log(results)
+    res.render('notification-div', { settingsData:settingsData });
+    // res.json(results.status);
+  });
 });
 
 router.post('/uninstall-web-hooks', function (req, res, next) {
@@ -347,36 +363,67 @@ router.post('/uninstall-web-hooks', function (req, res, next) {
   //   });
 });
 
-router.get('/create-script', function (req, res, next) {
-  let shop = req.query.shop;
+router.post('/save-settings', function (req, res, next) {
 
+  console.log('req.bodyreq.body', req.body);
+  if(req.body.done && req.body.done == 'done'){
+    if(req.body.id && req.body.id > 0){
+      req.where = {id:req.body.id};
+      delete req.body.id;
+      models['Setting'].updateAllValues(req, function (results) {
+        res.redirect('/'); 
+        // res.json(results.status);
+      });
+    } else {
+      models['Setting'].saveAllValues(req, function (results) {
+        res.redirect('/');
+        // res.json(results.status);
+      });
+    }
+  } else if(req.body.published && req.body.published == 'published'){
+    if(req.body.id && req.body.id > 0){
+      req.where = {id:req.body.id};
+      delete req.body.id;
+      req.body.status = true;
+      models['Setting'].updateAllValues(req, function (results) {
+        res.redirect('/'); 
+        // res.json(results.status);
+      });
+    } else {
+      req.body.status = true;
+      models['Setting'].saveAllValues(req, function (results) {
+        res.redirect('/');
+        // res.json(results.status);
+      });
+    }
+  }
+});
+
+router.post('/create-script', function (req, res, next) {
+
+  let shop = req.query.shop;
   req.where = {'shop_name':shop};
-  models['UserInfo'].getAccessToken(req, function (results) {
-    // console.log('resultsresults',results.access_token)
-    const shopRequestUrl = 'https://' + shop + '/admin/api/2019-10/script_tags.json';
-    // const shopRequestHeaders = {
-    //   'X-Shopify-Access-Token': results.access_token,
-    // };
+  models['UserInfo'].getAccessToken(req, function (results3) {
+
+    const shopRequestUrl3 = 'https://' + shop + '/admin/api/2019-10/script_tags.json';
     let new_script = {
       "script_tag": {
         "event": "onload",
         "src": forwardingAddress+"/js/script-tag.js"
       }
     };
-
-    let options = {
+    let options3 = {
         method: 'POST',
-        uri: shopRequestUrl,
+        uri: shopRequestUrl3,
         json: true,
         resolveWithFullResponse: true,//added this to view status code
         headers: {
-            'X-Shopify-Access-Token': results.access_token,
+            'X-Shopify-Access-Token': results3.access_token,
             'content-type': 'application/json'
         },
         body: new_script
     };
-
-    request.post(options)
+    request.post(options3)
       .then((shopResponse) => {
         // res.send({'hemant':'value'})
         res.json(shopResponse);
@@ -391,9 +438,6 @@ router.get('/create-script', function (req, res, next) {
 
 router.get('/recurring_application_charge_return', function (req, res, next) {
   let shop = req.query.shop;
-  
-
-  console.log('111111',req.query);
   res.redirect('https://'+shop+'/admin/apps'); 
   // res.render('index', { title: 'Express' });
 });
@@ -401,7 +445,6 @@ router.get('/recurring_application_charge_return', function (req, res, next) {
 router.get('/recurring_pay_list', function (req, res, next) {
   // let shop = req.query.shop;
 
-  console.log('111111',req.query);
   let shop = req.query.shop;
 
   req.where = {'shop_name':shop};
@@ -414,11 +457,9 @@ router.get('/recurring_pay_list', function (req, res, next) {
 
     request.get(shopRequestUrl, { headers: shopRequestHeaders })
     .then((shopResponse) => {
-      console.log('$$$$', shopResponse)
       res.end(shopResponse);
     })
     .catch((error) => {
-      console.log('EEEEEEE', error)
       res.status(error.statusCode).send(error.error.error_description);
     });
   });

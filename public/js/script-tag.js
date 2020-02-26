@@ -22,26 +22,27 @@
     document.getElementsByTagName("head")[0].appendChild(script);
   };
   // This is our JavaScript that we'll run after jQuery is included
-  var getPaymentIcons = function($) {
+  var getNotification = function($) {
+    console.log('Shopify@!@!', Shopify);
     $(document).ready(function(){  
       $.ajax({
-        url: 'https://badgemaster.hulkapps.com/frontend/get_trust_icons',
+        url: 'https://moxoapps.com/sf-notification/shopify/load-notification',
         type: 'GET',
-        data: {shop_id: Shopify.shop}
+        data: {shop: Shopify.shop}
       })
       .done(function(data) {
-        $('.hulkapps-trust-icons').html(data);
+        $('.sf-load-notification').html(data);
       })
     });
   }
-  // Check if jQuery is added, if not, then we'll loadScript, otherwise, run reChargeJS
+
   if(typeof(jQuery) == 'undefined'){
     // We'll get our jQuery from Google APIs
-    loadScript('//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js', function() {
+    loadScript('//code.jquery.com/jquery-3.4.1.min.js', function() {
         jQuery321 = jQuery.noConflict(true);
-        getPaymentIcons(jQuery321);
+        getNotification(jQuery321);
     });
   }else {
-    getPaymentIcons(jQuery);
+    getNotification(jQuery);
   }
 })();

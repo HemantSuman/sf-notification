@@ -6,7 +6,20 @@ var models = require('../models');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  console.log(req.query.shop);
+  // let shop = req.query.shop;
+  let shop = 'hemant-test-store-001.myshopify.com';
+
+  req.where = {'shop_name':shop};
+  models['UserInfo'].getFirstValues(req, function (results) {
+    let settingsDataFlag = true;
+    let userDataObj = results.dataValues;
+    
+    if(results.dataValues.Settings.length == 0){
+      settingsDataFlag = false;
+    }
+    res.render('index', { userDataObj:userDataObj, settingsDataFlag:settingsDataFlag });
+  });  
 });
 
 // router.get('/payment', function(req, res, next) {

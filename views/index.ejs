@@ -31,7 +31,7 @@
 					<div class="timer min"><span class="countdown_value">33</span> <span class="countdown_label">Min</span></div>
 					<div class="timer sec"><span class="countdown_value">22</span> <span class="countdown_label">Sec</span></div></div>
 				<div class="moxo-textbar">
-					<span id="title" class="moxo_title">Latest</span>				
+					<span id="title" name="title" value="<%= userDataObj.Settings.title %>" class="moxo_title" />Latest</span>				
 					<span id="message" class="moxo_message moxo_message_cta">Your Message Goes Here .....</span>
 				</div>
 				<div class="moxo_btn_holder"><a id="button" class="moxo_bar_btn minimal">Learn More</a></div>			
@@ -40,364 +40,368 @@
 			<div class="bg-section"></div>
 		</div>
 	</div>
-	
-	<div class="moxo-container moxo-wrapper">
-	
-		<div class="moxo-row mb-4">
-			<div class="moxo-col-12">
-				<ul class="tabs">
-					<li class="tab"><a href="#test1" class="active" >Dashboard</a></li>
-					<li class="tab"><a href="#test2">App Setup</a></li>
-					<li class="tab"><a href="#test3">FAQ's</a></li>
-					<li class="tab"><a href="#test4">Pricing & Plans</a></li>
-				</ul>
-			</div>
-			<div class="moxo-col-12">
-				<div class="moxo-block">
-					<div class="moxo-header"> 
-						<i class="tiny material-icons">settings_power</i>
-						<span>General Setting</span>
+	<form action="/shopify/save-settings" method="post" id="settingForm" >
+		<div class="moxo-container moxo-wrapper">
+		
+			<div class="moxo-row mb-4">
+				<div class="moxo-col-12">
+					<ul class="tabs">
+						<li class="tab"><a href="#test1" class="active" >Dashboard</a></li>
+						<li class="tab"><a href="#test2">App Setup</a></li>
+						<li class="tab"><a href="#test3">FAQ's</a></li>
+						<li class="tab"><a href="#test4">Pricing & Plans</a></li>
+					</ul>
+				</div>
+				<div class="moxo-col-12">
+					<div class="moxo-block">
+						<div class="moxo-header"> 
+							<i class="tiny material-icons">settings_power</i>
+							<span>General Setting</span>
+						</div>
+						<div class="moxo-block-inner">
+							<div class="switch mb-3">
+								<span class="moxo-element">Enable/Disable Notification Bar</span>
+								<label>
+									Off
+									<input type="checkbox" class="notiMain_toggle" checked>
+									<span class="lever"></span>
+									On
+								</label>
+							</div>						
+							<div class="radio">								
+								<span class="moxo-element">Position Notification Bar</span>
+								<label>
+									<input name="position" value="top" class="notiMain_position" type="radio" checked>
+									<span>Top</span>
+								</label>
+								<label>
+									<input name="position" value="bottom" class="notiMain_position" type="radio"/>
+									<span>Bottom</span>
+								</label>								
+																					
+							</div>						
+							<div class="radio">								
+								<span class="moxo-element">Top Sticky</span>
+								<label>
+									<input name="sticky" type="radio" value="fixed" class="notiMain_sticky" checked>
+									<span>Fixed</span>
+								</label>								
+								<label>
+									<input name="sticky" type="radio" value="scroll" class="notiMain_sticky">
+									<span>Scroll</span>
+								</label>													
+							</div>						
+							<button type="button" name="action" class="moxo_btn">Save
+								<i class="material-icons">send</i>
+							</button>						
+						</div>					
 					</div>
-					<div class="moxo-block-inner">
-						<div class="switch mb-3">
-							<span class="moxo-element">Enable/Disable Notification Bar</span>
-							<label>
-								Off
-								<input type="checkbox" class="notiMain_toggle" checked>
-								<span class="lever"></span>
-								On
-							</label>
-						</div>						
-						<div class="radio">								
-							<span class="moxo-element">Position Notification Bar</span>
-							<label>
-								<input name="position" value="top" class="notiMain_position" type="radio" checked>
-								<span>Top</span>
-							</label>
-							<label>
-								<input name="position" value="bottom" class="notiMain_position" type="radio"/>
-								<span>Bottom</span>
-							</label>								
-																				
-						</div>						
-						<div class="radio">								
-							<span class="moxo-element">Top Sticky</span>
-							<label>
-								<input name="sticky" type="radio" value="fixed" class="notiMain_sticky" checked>
-								<span>Fixed</span>
-							</label>								
-							<label>
-								<input name="sticky" type="radio" value="scroll" class="notiMain_sticky">
-								<span>Scroll</span>
-							</label>													
-						</div>						
-						<button type="button" name="action" class="moxo_btn">Save
-							<i class="material-icons">send</i>
-						</button>						
-					</div>					
 				</div>
 			</div>
-		</div>
-		
-		<div class="moxo-row mb-4">			
 			
-			<div class="moxo-col-12">
-				<div class="moxo-header">
-						<i class="tiny material-icons">color_lens</i>
-						<span>Design Configurator</span>
-				</div>
-			</div>
-			<div class="moxo-col-12">
-				<div class="moxo-block">
-					<div class="moxo-block-inner">
-						<span class="tagline">Notification Bar Background Pattern Style :-</span>
-						<div class="moxo-row">
-							<div class="moxo-col-6">
-								<span class="moxo-element">Background Color :</span>
-								<input class="jscolor {onFineChange:'holder(this)'}" value="5c6ac4">
-							</div>
-							<div class="moxo-col-6">
-								<span class="moxo-element">Background Image :</span>
-								<a href="javascript:void(0)" class="clear_bg">clear</a>
-								<div class="file is-boxed">
-									<label class="file-label">
-										<input class="file-input" type="file" name="resume">
-										<span class="file-cta">
-											<span class="file-icon">
-												<i class="tiny material-icons">file_upload</i>
-											</span>
-											<span class="file-label">
-												Choose a file.
-											</span>
-										</span>
-									</label>
-								</div>								
-							</div>
-						</div>
-					</div>	
+			<div class="moxo-row mb-4">			
 				
+				<div class="moxo-col-12">
+					<div class="moxo-header">
+							<i class="tiny material-icons">color_lens</i>
+							<span>Design Configurator</span>
+					</div>
+				</div>
+				<div class="moxo-col-12">
+					<div class="moxo-block">
+						<div class="moxo-block-inner">
+							<span class="tagline">Notification Bar Background Pattern Style :-</span>
+							<div class="moxo-row">
+								<div class="moxo-col-6">
+									<span class="moxo-element">Background Color :</span>
+									<input class="jscolor {onFineChange:'holder(this)'}" value="5c6ac4">
+								</div>
+								<div class="moxo-col-6">
+									<span class="moxo-element">Background Image :</span>
+									<a href="javascript:void(0)" class="clear_bg">clear</a>
+									<div class="file is-boxed">
+										<label class="file-label">
+											<input class="file-input" type="file" name="resume">
+											<span class="file-cta">
+												<span class="file-icon">
+													<i class="tiny material-icons">file_upload</i>
+												</span>
+												<span class="file-label">
+													Choose a file.
+												</span>
+											</span>
+										</label>
+									</div>								
+								</div>
+							</div>
+						</div>	
+					
+					</div>
 				</div>
 			</div>
-		</div>
-		
-		<div class="moxo-row mb-4">
-			<div class="moxo-col-12">
-				<div class="moxo-block">
-					<div class="moxo-header">
-						<i class="tiny material-icons">edit</i>
-						<span>Text Configurator</span>
-					</div>
-					<div class="moxo-block-inner">								
-						<div class="title-text">
-							<span class="moxo-element"> Title </span>
-							<input id="ttl" placeholder="Title"  type="text" class="title-typing validate">
+			
+			<div class="moxo-row mb-4">
+				<div class="moxo-col-12">
+					<div class="moxo-block">
+						<div class="moxo-header">
+							<i class="tiny material-icons">edit</i>
+							<span>Text Configurator</span>
 						</div>
-						<div class="moxo-row">
-							<div class="input-field moxo-col-6 mt-4">
-								<span class="moxo-element">Title Font-Family</span>
-								<input type="text" class="title_fonts">
-							</div>							
-							<div class="input-field moxo-col-6 mt-4">
-								<span class="moxo-element">Title Font-size</span>
-								<input class="title_font_size" type="range" min="10" max="20" value="14"  />
+						<div class="moxo-block-inner">								
+							<div class="title-text">
+								<span class="moxo-element"> Title </span>
+								<input id="title" name="title" value="<%= settingsDataFlag ? userDataObj.Settings[0].title : '' %>" placeholder="Title"  type="text" class="title-typing validate">
 							</div>
-							<div class="input-field moxo-col-6 mt-4">
-								<span class="moxo-element">Title Text Color</span>								
-								<input class="jscolor {onFineChange:'ttltxt(this)'}" value="f24259">
+							<div class="moxo-row">
+								<div class="input-field moxo-col-6 mt-4">
+									<span class="moxo-element">Title Font-Family</span>
+									<input type="text" class="title_fonts">
+								</div>							
+								<div class="input-field moxo-col-6 mt-4">
+									<span class="moxo-element">Title Font-size</span>
+									<input class="title_font_size" type="range" min="10" max="20" value="14"  />
+								</div>
+								<div class="input-field moxo-col-6 mt-4">
+									<span class="moxo-element">Title Text Color</span>								
+									<input class="jscolor {onFineChange:'ttltxt(this)'}" value="f24259">
+								</div>
+								<div class="input-field moxo-col-6 mt-4">
+									<span class="moxo-element">Title BG Color</span>	
+									<input class="jscolor {onFineChange:'ttlbg(this)'}" value="ffffff">
+								</div>	
 							</div>
-							<div class="input-field moxo-col-6 mt-4">
-								<span class="moxo-element">Title BG Color</span>	
-								<input class="jscolor {onFineChange:'ttlbg(this)'}" value="ffffff">
-							</div>	
+							
+							<div class="message-content mt-4">
+								<span class="moxo-element"> Message </span>
+								<div class="message-text">								
+									<p id="textarea1" class="moxo_barText" contenteditable="true"></p>
+									<button class='b_btn moxo_btn'>B</button>
+									<button class='i_btn moxo_btn'>I</button>
+									<!-- <textarea id="textarea1" class="materialize-textarea"></textarea> -->
+								</div>
+							</div>
+							<div class="moxo-row">
+								<div class="input-field moxo-col-6 mt-4">
+									<span id="font_p" class="moxo-element">Message Font Family</span>
+									<input type="text" class="msg_fonts">								
+								</div>
+								<div class="input-field moxo-col-6 mt-4">
+									<span class="moxo-element">Message Font Size</span>
+									<input class="msg_font_size" type="range" min="10" max="20" value="14"  />								
+								</div>
+								<div class="input-field moxo-col-6 mt-4">
+									<span class="moxo-element">Message Text Color</span>
+									<input class="jscolor {onFineChange:'msgtxt(this)'}" value="ffffff">								
+								</div>
+								<div class="input-field moxo-col-6 mt-4">
+									<span class="moxo-element">Message BG Color</span>
+									<input class="jscolor {onFineChange:'msgbg(this)'}" value="5c6ac4">							
+								</div>										
+							</div>
+						</div>							
+					</div>
+				</div>
+			</div>
+										
+			<div class="moxo-row mb-4">
+				<div class="moxo-col-12">
+					<div class="moxo-block">
+						<div class="moxo-header">
+								<i class="tiny material-icons">brightness_auto</i>
+								<span>Button Configurator</span>
+						</div>
+						<div class="moxo-block-inner">
+							<div class="moxo-row">	
+								<div class="button-text moxo-col-6 mb-4">
+									<span class="moxo-element"> Button Label</span>	
+									<input id="btn" type="text" placeholder="Button Text"  class="btn-text validate">
+								</div>
+								<div class="button-text moxo-col-6 mb-4">
+									<span class="moxo-element"> Button URL</span>
+									<input id="btn-url" placeholder="Button URL" type="text" class="btn-url validate">
+								</div>
+							</div>
+							<div class="moxo-row">
+								<div class="moxo-col-6 mb-4">
+									<span class="moxo-element">Button Font-Family</span>
+									<input type="text" class="btn_fonts">									
+								</div>
+								<div class="moxo-col-6 mb-4">
+									<span class="moxo-element">Button Font-size</span>
+									<input class="btn_font_size" type="range" min="10" max="20" value="14"  />
+								</div>
+								<div class="button-color moxo-col-md-3 moxo-col-6 mt-auto">
+									<span class="moxo-element">Text Color</span>
+									<input class="jscolor {onFineChange:'btntxt(this)'}" value="ffffff">
+								</div>
+								<div class="button-color moxo-col-md-3 moxo-col-6 mt-auto">
+									<span class="moxo-element">BG Color</span>
+									<input class="jscolor {onFineChange:'btnbg(this)'}" value="f24259">
+								</div>
+								<div class="button-bg-color moxo-col-6">
+									<span class="moxo-element">Button styles</span>
+									<select class="browser-default btn_style">
+										<option selected>Choose your option </option>
+										<option>minimal</option>
+										<option>fill</option>
+										<option>outline</option>
+									</select>									
+								</div>	
+								<div class="moxo-col-6 mt-4">
+									<span class="moxo-element">Button Radius</span>
+									<input class="btn_radius" type="range" min="0" max="25" value="5"  />
+								</div>
+							</div>						
 						</div>
 						
-						<div class="message-content mt-4">
-							<span class="moxo-element"> Message </span>
-							<div class="message-text">								
-								<p id="textarea1" class="moxo_barText" contenteditable="true"></p>
-								<button class='b_btn moxo_btn'>B</button>
-								<button class='i_btn moxo_btn'>I</button>
-								<!-- <textarea id="textarea1" class="materialize-textarea"></textarea> -->
-							</div>
-						</div>
-						<div class="moxo-row">
-							<div class="input-field moxo-col-6 mt-4">
-								<span id="font_p" class="moxo-element">Message Font Family</span>
-								<input type="text" class="msg_fonts">								
-							</div>
-							<div class="input-field moxo-col-6 mt-4">
-								<span class="moxo-element">Message Font Size</span>
-								<input class="msg_font_size" type="range" min="10" max="20" value="14"  />								
-							</div>
-							<div class="input-field moxo-col-6 mt-4">
-								<span class="moxo-element">Message Text Color</span>
-								<input class="jscolor {onFineChange:'msgtxt(this)'}" value="ffffff">								
-							</div>
-							<div class="input-field moxo-col-6 mt-4">
-								<span class="moxo-element">Message BG Color</span>
-								<input class="jscolor {onFineChange:'msgbg(this)'}" value="5c6ac4">							
-							</div>										
-						</div>
-					</div>							
+					</div>
 				</div>
 			</div>
-		</div>
-									
-		<div class="moxo-row mb-4">
-			<div class="moxo-col-12">
-				<div class="moxo-block">
-					<div class="moxo-header">
-							<i class="tiny material-icons">brightness_auto</i>
-							<span>Button Configurator</span>
-					</div>
-					<div class="moxo-block-inner">
-						<div class="moxo-row">	
-							<div class="button-text moxo-col-6 mb-4">
-								<span class="moxo-element"> Button Label</span>	
-								<input id="btn" type="text" placeholder="Button Text"  class="btn-text validate">
-							</div>
-							<div class="button-text moxo-col-6 mb-4">
-								<span class="moxo-element"> Button URL</span>
-								<input id="btn-url" placeholder="Button URL" type="text" class="btn-url validate">
-							</div>
+			
+			<div class="moxo-row mb-4">
+				<div class="moxo-col-12">
+					<div class="moxo-block">
+						<div class="moxo-header">
+								<i class="tiny material-icons">close</i>
+								<span>Close Button Configurator</span>
 						</div>
-						<div class="moxo-row">
-							<div class="moxo-col-6 mb-4">
-								<span class="moxo-element">Button Font-Family</span>
-								<input type="text" class="btn_fonts">									
+						<div class="moxo-block-inner">								
+							<div class="switch">
+								<span class="tagline">Enable/Disable Close Button</span>
+								<label>
+									Off
+									<input type="checkbox" class="notiClose_toggle" checked>
+									<span class="lever"></span>
+									On
+								</label>
 							</div>
-							<div class="moxo-col-6 mb-4">
-								<span class="moxo-element">Button Font-size</span>
-								<input class="btn_font_size" type="range" min="10" max="20" value="14"  />
-							</div>
-							<div class="button-color moxo-col-md-3 moxo-col-6 mt-auto">
-								<span class="moxo-element">Text Color</span>
-								<input class="jscolor {onFineChange:'btntxt(this)'}" value="ffffff">
-							</div>
-							<div class="button-color moxo-col-md-3 moxo-col-6 mt-auto">
-								<span class="moxo-element">BG Color</span>
-								<input class="jscolor {onFineChange:'btnbg(this)'}" value="f24259">
-							</div>
-							<div class="button-bg-color moxo-col-6">
-								<span class="moxo-element">Button styles</span>
-								<select class="browser-default btn_style">
-									<option selected>Choose your option </option>
-									<option>minimal</option>
-									<option>fill</option>
-									<option>outline</option>
-								</select>									
-							</div>	
-							<div class="moxo-col-6 mt-4">
-								<span class="moxo-element">Button Radius</span>
-								<input class="btn_radius" type="range" min="0" max="25" value="5"  />
-							</div>
-						</div>						
+							<div class="moxo-row">
+								<div class="moxo-col-md-2 moxo-col-6 mt-auto">
+									<span class="moxo-element">Icon's</span>
+									<select class="browser-default e1_element" name="e1_element">
+										<option value="">No icon</option>
+										<option>icon-user</option>
+										<option>icon-search</option>
+										<option>icon-right-dir</option>
+										<option>icon-star</option>
+										<option>icon-cancel</option>
+										<option>icon-help-circled</option>
+										<option>icon-info-circled</option>
+										<option>icon-eye</option>
+										<option>icon-tag</option>
+										<option>icon-bookmark</option>
+										<option>icon-heart</option>
+										<option>icon-thumbs-down-alt</option>
+										<option>icon-upload-cloud</option>
+										<option>icon-phone-squared</option>
+										<option>icon-cog</option>
+										<option>icon-wrench</option>
+										<option>icon-volume-down</option>
+										<option>icon-down-dir</option>
+										<option>icon-up-dir</option>
+										<option>icon-left-dir</option>
+										<option>icon-thumbs-up-alt</option>
+									</select>
+										
+								</div>
+								<div class="button-color moxo-col-md-2 moxo-col-6 mt-auto">
+									<span class="moxo-element">Text Color</span>
+									<input class="jscolor {onFineChange:'btn_close_txt(this)'}" value="ffffff">
+								</div>
+								<div class="button-color moxo-col-md-2 moxo-col-6 mt-auto">
+									<span class="moxo-element">BG Color</span>
+									<input class="jscolor {onFineChange:'btn_close_bg(this)'}" value="f24259">
+								</div>
+								<div class="moxo-col-6 mt-3">
+									<span class="moxo-element"> Close Button Type</span>
+									<select class="browser-default btn_close_style">
+										<option selected>Choose your option </option>
+										<option>minimal</option>
+										<option>fill</option>
+										<option>outline</option>
+									</select>	
+								</div>
+								<div class="moxo-col-6 mt-4">
+									<span class="moxo-element">Button Radius</span>
+									<input class="btn_close_radius" type="range" min="0" max="25" value="0"  />
+								</div>
+							</div>								
+						</div>					
 					</div>
+				</div>
+			</div>
+			
+			<div class="moxo-row mb-4">
+				<div class="moxo-col-12">
+					<div class="moxo-block">
+						<div class="moxo-header">
+								<i class="tiny material-icons">plus_one</i>
+								<span>Countdown Configurator</span>
+						</div>
+						<div class="moxo-block-inner">								
+							<div class="switch">
+								<span class="tagline">Enable/Disable Countdown Section</span>
+								<label>
+									Off
+									<input type="checkbox" class="notiCountdown_toggle" checked>
+									<span class="lever"></span>
+									On
+								</label>
+							</div>
+							<div class="moxo-row mt-3">
+								<div class="moxo-col-md-6 moxo-col-12 mb-4">
+									<span class="moxo-element">Start Time </span>
+									<input type="text" id="datetime" class="date_start"  placeholder="Select Date" >
+								</div>
+								<div class="moxo-col-md-6 moxo-col-12 mb-4">
+									<span class="moxo-element">End Time </span>
+									<input type="text" id="datetimeEnd" class="date_end" placeholder="Select Date">
+								</div>									
+							</div>
+							<div class="moxo-row">
+								<div class="moxo-col-6">
+									<span class="moxo-element">Countdown Type</span>
+									<select class="icons">
+										<option value="" disabled selected>Choose your style</option>
+										<option value="" data-icon="img/111.png" class="left">Simple</option>
+										<option value="" data-icon="img/112.png" class="left">Rounded</option>
+										<option value="" data-icon="img/113.png" class="left">Circle</option>
+										<option value="" data-icon="img/114.png" class="left">Square</option>
+									</select>
+								</div>
+								<div class="moxo-col-6 mt-auto">
+									<span class="moxo-element">Text Color</span>
+									<input class="jscolor {onFineChange:'update(this)'}" value="5c6ac4">
+								</div>
+							</div>
+						</div>					
+					</div>
+				</div>
+			</div>
 					
+			<div class="moxo-row mb-4">
+				<div class="moxo-col-12">
+					<div class="moxo-block text-center">
+						<div class="copy-block">
+							<p id="p1">Hello, Welcome.... </p>		
+							<button class="moxo_btn tooltipped" data-position="top" data-tooltip="I am a tooltip" onclick="copyToClipboard('#p1')">Copy TEXT</button>
+						</div>					
+					</div>
 				</div>
 			</div>
 		</div>
 		
-		<div class="moxo-row mb-4">
-			<div class="moxo-col-12">
-				<div class="moxo-block">
-					<div class="moxo-header">
-							<i class="tiny material-icons">close</i>
-							<span>Close Button Configurator</span>
-					</div>
-					<div class="moxo-block-inner">								
-						<div class="switch">
-							<span class="tagline">Enable/Disable Close Button</span>
-							<label>
-								Off
-								<input type="checkbox" class="notiClose_toggle" checked>
-								<span class="lever"></span>
-								On
-							</label>
-						</div>
-						<div class="moxo-row">
-							<div class="moxo-col-md-2 moxo-col-6 mt-auto">
-								<span class="moxo-element">Icon's</span>
-								<select class="browser-default e1_element" name="e1_element">
-									<option value="">No icon</option>
-									<option>icon-user</option>
-									<option>icon-search</option>
-									<option>icon-right-dir</option>
-									<option>icon-star</option>
-									<option>icon-cancel</option>
-									<option>icon-help-circled</option>
-									<option>icon-info-circled</option>
-									<option>icon-eye</option>
-									<option>icon-tag</option>
-									<option>icon-bookmark</option>
-									<option>icon-heart</option>
-									<option>icon-thumbs-down-alt</option>
-									<option>icon-upload-cloud</option>
-									<option>icon-phone-squared</option>
-									<option>icon-cog</option>
-									<option>icon-wrench</option>
-									<option>icon-volume-down</option>
-									<option>icon-down-dir</option>
-									<option>icon-up-dir</option>
-									<option>icon-left-dir</option>
-									<option>icon-thumbs-up-alt</option>
-								</select>
-									
-							</div>
-							<div class="button-color moxo-col-md-2 moxo-col-6 mt-auto">
-								<span class="moxo-element">Text Color</span>
-								<input class="jscolor {onFineChange:'btn_close_txt(this)'}" value="ffffff">
-							</div>
-							<div class="button-color moxo-col-md-2 moxo-col-6 mt-auto">
-								<span class="moxo-element">BG Color</span>
-								<input class="jscolor {onFineChange:'btn_close_bg(this)'}" value="f24259">
-							</div>
-							<div class="moxo-col-6 mt-3">
-								<span class="moxo-element"> Close Button Type</span>
-								<select class="browser-default btn_close_style">
-									<option selected>Choose your option </option>
-									<option>minimal</option>
-									<option>fill</option>
-									<option>outline</option>
-								</select>	
-							</div>
-							<div class="moxo-col-6 mt-4">
-								<span class="moxo-element">Button Radius</span>
-								<input class="btn_close_radius" type="range" min="0" max="25" value="0"  />
-							</div>
-						</div>								
-					</div>					
-				</div>
-			</div>
+		<div class="editor_bottom_bar">
+			<input type="hidden" value="<%= userDataObj.shop_name %>" name="shop_name" /> 
+			<input type="hidden" value="<%= settingsDataFlag ? userDataObj.Settings[0].id : '' %>" name="id" /> 
+			<input type="hidden" value="<%= userDataObj.id %>" name="user_info_id" /> 
+			<button class="moxo_btn moxo_outlined">Cancel</button>
+			<button class="moxo_btn moxo_outlined_negative">Delete</button>
+			<!---->
+			<button name="published" value="published" class="moxo_btn moxo_outlined moxo_publish">Published</button>
+			<button id="notification_done_btn1" name="done" value="done" class="moxo_btn moxo_publish_active">Done</button>
 		</div>
-		
-		<div class="moxo-row mb-4">
-			<div class="moxo-col-12">
-				<div class="moxo-block">
-					<div class="moxo-header">
-							<i class="tiny material-icons">plus_one</i>
-							<span>Countdown Configurator</span>
-					</div>
-					<div class="moxo-block-inner">								
-						<div class="switch">
-							<span class="tagline">Enable/Disable Countdown Section</span>
-							<label>
-								Off
-								<input type="checkbox" class="notiCountdown_toggle" checked>
-								<span class="lever"></span>
-								On
-							</label>
-						</div>
-						<div class="moxo-row mt-3">
-							<div class="moxo-col-md-6 moxo-col-12 mb-4">
-								<span class="moxo-element">Start Time </span>
-								<input type="text" id="datetime" class="date_start"  placeholder="Select Date" >
-							</div>
-							<div class="moxo-col-md-6 moxo-col-12 mb-4">
-								<span class="moxo-element">End Time </span>
-								<input type="text" id="datetimeEnd" class="date_end" placeholder="Select Date">
-							</div>									
-						</div>
-						<div class="moxo-row">
-							<div class="moxo-col-6">
-								<span class="moxo-element">Countdown Type</span>
-								<select class="icons">
-									  <option value="" disabled selected>Choose your style</option>
-									  <option value="" data-icon="img/111.png" class="left">Simple</option>
-									  <option value="" data-icon="img/112.png" class="left">Rounded</option>
-									  <option value="" data-icon="img/113.png" class="left">Circle</option>
-									  <option value="" data-icon="img/114.png" class="left">Square</option>
-								</select>
-							</div>
-							<div class="moxo-col-6 mt-auto">
-								<span class="moxo-element">Text Color</span>
-								<input class="jscolor {onFineChange:'update(this)'}" value="5c6ac4">
-							</div>
-						</div>
-					</div>					
-				</div>
-			</div>
-		</div>
-				
-		<div class="moxo-row mb-4">
-			<div class="moxo-col-12">
-				<div class="moxo-block text-center">
-					<div class="copy-block">
-						<p id="p1">Hello, Welcome.... </p>		
-						<button class="moxo_btn tooltipped" data-position="top" data-tooltip="I am a tooltip" onclick="copyToClipboard('#p1')">Copy TEXT</button>
-					</div>					
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="editor_bottom_bar">
-		<button class="moxo_btn moxo_outlined">Cancel</button>
-		<button class="moxo_btn moxo_outlined_negative">Delete</button>
-		<!---->
-		<button class="moxo_btn moxo_outlined moxo_publish">Published</button>
-		<button class="moxo_btn moxo_publish_active">Done</button>
-	</div>
+	</form>
 	<!--JavaScript at end of body for optimized loading-->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
@@ -414,5 +418,6 @@
 	<!-- countdown JS -->
 	<script type="text/javascript" src="js/countdown.js"></script>
 	<script type="text/javascript" src="js/custom-app.js"></script>
+	<script type="text/javascript" src="js/admin-app.js"></script>
 </body>
 </html>
