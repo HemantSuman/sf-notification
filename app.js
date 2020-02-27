@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index');
 var shopify = require('./routes/shopify');
 
 var app = express();
-
+app.use(cors());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
