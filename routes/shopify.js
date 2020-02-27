@@ -38,7 +38,7 @@ router.get('/', function (req, res, next) {
         console.log('installUrl', apiKey,installUrl)
       } else {
         console.log('111')
-        res.redirect('/');        
+        res.redirect('/sf-notification');        
       }
     });    
   } else {
@@ -299,8 +299,7 @@ router.get('/load-notification', function (req, res, next) {
   req.where = {'shop_name':shop};
 
   models['UserInfo'].getFirstValues(req, function (results) {
-    console.log(results)
-    res.render('notification-div', { notificationData:results.dataValues.Settings });
+    res.render('notification-div', { notificationData:results.dataValues.Settings[0] });
     // res.json(results.status);
   });
 });
@@ -371,12 +370,12 @@ router.post('/save-settings', function (req, res, next) {
       req.where = {id:req.body.id};
       delete req.body.id;
       models['Setting'].updateAllValues(req, function (results) {
-        res.redirect('/'); 
+        res.redirect('/sf-notification'); 
         // res.json(results.status);
       });
     } else {
       models['Setting'].saveAllValues(req, function (results) {
-        res.redirect('/');
+        res.redirect('/sf-notification');
         // res.json(results.status);
       });
     }
@@ -386,13 +385,13 @@ router.post('/save-settings', function (req, res, next) {
       delete req.body.id;
       req.body.status = true;
       models['Setting'].updateAllValues(req, function (results) {
-        res.redirect('/'); 
+        res.redirect('/sf-notification'); 
         // res.json(results.status);
       });
     } else {
       req.body.status = true;
       models['Setting'].saveAllValues(req, function (results) {
-        res.redirect('/');
+        res.redirect('/sf-notification');
         // res.json(results.status);
       });
     }
