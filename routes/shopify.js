@@ -298,9 +298,9 @@ router.get('/load-notification', function (req, res, next) {
   let shop = req.query.shop;
   req.where = {'shop_name':shop};
 
-  models['Setting'].getNotificationDiv(req, function (results) {
+  models['UserInfo'].getFirstValues(req, function (results) {
     console.log(results)
-    res.render('notification-div', { notificationData:notificationData });
+    res.render('notification-div', { notificationData:results.dataValues.Settings });
     // res.json(results.status);
   });
 });
