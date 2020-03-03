@@ -26,6 +26,230 @@ module.exports = function (sequelize, DataTypes) {
                 //     },
                 // }
             },            
+            TitleFontFamily: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            TitleFontsize: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            TitleTextColor: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            TitleBGColor: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            textarea1: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            MessageFontFamily: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            MessageFontSize: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            MessageTextColor: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            MessageBGColor: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            ButtonLabel: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            ButtonURL: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            ButtonFontFamily: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            ButtonFontsize: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            BtnTextColor: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            BtnBGColor: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            Buttonstyles: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            BtnButtonRadius: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            EnableDisableCloseButton: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            Icons: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            CloseBtnTextColor: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            CloseBtnBgColor: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            CloseButtonType: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            ButtonRadius: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            EnableDisableCountdownSection: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            StartTime: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            EndTime: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            CountdownType: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
+            CountdownTextColor: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
             status: {
                 type: DataTypes.INTEGER,
                 // validate: {
