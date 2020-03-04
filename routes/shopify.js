@@ -46,6 +46,19 @@ router.get('/', function (req, res, next) {
   }  
 });
 
+router.get('/test', (req, res) => {
+  req.body = {
+    shop_name: 'shop',
+    access_token: 'accessToken'
+  };
+  req.body.settings_val = {};
+  req.body.settings_val['title'] = 'dfgdfgfdgdf';
+  models['UserInfo'].saveAllValues(req, function (results1) {
+    console.log(results1);
+  });
+});
+
+
 router.get('/callback', (req, res) => {
   const { shop, hmac, code, state } = req.query;
   const stateCookie = cookie.parse(req.headers.cookie).state;
@@ -95,6 +108,8 @@ router.get('/callback', (req, res) => {
                   shop_name: shop,
                   access_token: accessToken
                 };
+      req.body.settings_val = {};
+      req.body.settings_draft_val = {};
       models['UserInfo'].saveAllValues(req, function (results1) {
         // res.redirect('/');
         //request webhooks when app uninstalled
