@@ -133,7 +133,13 @@ module.exports = function (sequelize, DataTypes) {
         // res('foo');
     };
     myModel.saveAllValues = function (req, res) {
-         myModel.create(req.body).then(function (results) {
+        var users_info_settings = myModel.hasMany(sequelize.models.Setting, {foreignKey: 'user_info_id'});
+        // var users_social_logins = myModel.hasMany(sequelize.models.SocialLogin, {as: 'social_logins', foreignKey: 'user_id'});
+         myModel.create(req.body, {
+            include: [
+                users_info_settings
+            ]
+        }).then(function (results) {
             results.status = 1;
             res(results);
         }).catch(function (err) {
