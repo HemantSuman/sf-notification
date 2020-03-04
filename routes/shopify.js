@@ -381,35 +381,48 @@ router.post('/save-settings', function (req, res, next) {
 
   console.log('req.bodyreq.body', req.body);
   if(req.body.done && req.body.done == 'done'){
-    if(req.body.id && req.body.id > 0){
-      req.where = {id:req.body.id};
-      delete req.body.id;
-      models['Setting'].updateAllValues(req, function (results) {
+    // if(req.body.id && req.body.id > 0){
+      req.where = {id:req.body.settingdraft_id};
+      delete req.body.settingdraft_id;
+      models['Settingdraft'].updateAllValues(req, function (results) {
         res.redirect('/sf-notification'); 
         // res.json(results.status);
       });
-    } else {
-      models['Setting'].saveAllValues(req, function (results) {
-        res.redirect('/sf-notification');
-        // res.json(results.status);
-      });
-    }
+    // } else {
+    //   models['Setting'].saveAllValues(req, function (results) {
+    //     res.redirect('/sf-notification');
+    //     // res.json(results.status);
+    //   });
+    // }
   } else if(req.body.published && req.body.published == 'published'){
-    if(req.body.id && req.body.id > 0){
-      req.where = {id:req.body.id};
-      delete req.body.id;
+    // if(req.body.id && req.body.id > 0){
+      let settingId = req.body.settings_id;
+      let settingDraftId = req.body.settingdraft_id;
+
+      req.where = {id:settingId};
+      delete req.body.settings_id;
+      delete req.body.settingdraft_id;
+
       req.body.status = true;
       models['Setting'].updateAllValues(req, function (results) {
+
+        req.where = {id:settingDraftId};
+        
+        req.body.status = true;
+        models['Settingdraft'].updateAllValues(req, function (results) {
+          res.redirect('/sf-notification'); 
+        });
         res.redirect('/sf-notification'); 
-        // res.json(results.status);
       });
-    } else {
-      req.body.status = true;
-      models['Setting'].saveAllValues(req, function (results) {
-        res.redirect('/sf-notification');
-        // res.json(results.status);
-      });
-    }
+
+      
+    // } else {
+    //   req.body.status = true;
+    //   models['Setting'].saveAllValues(req, function (results) {
+    //     res.redirect('/sf-notification');
+    //     // res.json(results.status);
+    //   });
+    // }
   }
 });
 

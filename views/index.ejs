@@ -32,14 +32,14 @@
 					<div class="timer sec"><span class="countdown_value">22</span> <span class="countdown_label">Sec</span></div></div>
 				<div class="moxo-textbar">
 					<span
-					style = "font-family:'<%= userDataObj.Settings[0].TitleFontFamily%>';
-					font-size:<%=userDataObj.Settings[0].TitleFontsize%>;
-					color:<%=userDataObj.Settings[0].TitleTextColor%>;
-					background-color:<%=userDataObj.Settings[0].TitleBGColor%>"
+					style = "font-family:'<%= userDataObj.Settingdrafts[0].TitleFontFamily%>';
+					font-size:<%=userDataObj.Settingdrafts[0].TitleFontsize%>;
+					color:<%=userDataObj.Settingdrafts[0].TitleTextColor%>;
+					background-color:<%=userDataObj.Settingdrafts[0].TitleBGColor%>"
 
-					id="title" name="title" class="moxo_title"><%= userDataObj.Settings[0].title %></span
+					id="title" name="title" class="moxo_title"><%= userDataObj.Settingdrafts[0].title %></span
 						>
-					<span id="message" class="moxo_message moxo_message_cta"><%- userDataObj.Settings[0].textarea1 %></span>
+					<span id="message" class="moxo_message moxo_message_cta"><%- userDataObj.Settingdrafts[0].textarea1 %></span>
 				</div>
 				<div class="moxo_btn_holder"><a id="button" class="moxo_bar_btn minimal">Learn More</a></div>			
 			</div>
@@ -158,7 +158,7 @@
 						<div class="moxo-block-inner">								
 							<div class="title-text">
 								<span class="moxo-element"> Title </span>
-								<input id="ttl" name="title" value="<%= settingsDataFlag ? userDataObj.Settings[0].title : '' %>" placeholder="Title"  type="text" class="title-typing validate">
+								<input id="ttl" name="title" value="<%= userDataObj.Settingdrafts[0].title %>" placeholder="Title"  type="text" class="title-typing validate">
 							</div>
 							<div class="moxo-row">
 								<div class="input-field moxo-col-6 mt-4">
@@ -185,7 +185,6 @@
 									<p id="textarea1" name="textarea1" class="moxo_barText" contenteditable="true"></p>
 									<button class='b_btn moxo_btn'>B</button>
 									<button class='i_btn moxo_btn'>I</button>
-									<!-- <textarea id="textarea1" class="materialize-textarea"></textarea> -->
 								</div>
 							</div>
 							<div class="moxo-row">
@@ -401,7 +400,8 @@
 		
 		<div class="editor_bottom_bar">
 			<input type="hidden" value="<%= userDataObj.shop_name %>" name="shop_name" /> 
-			<input type="hidden" value="<%= settingsDataFlag ? userDataObj.Settings[0].id : '' %>" name="id" /> 
+			<input type="hidden" value="<%= userDataObj.Settings[0].id %>" name="settings_id" /> 
+			<input type="hidden" value="<%= userDataObj.Settingdrafts[0].id %>" name="settingdraft_id" /> 
 			<input type="hidden" value="<%= userDataObj.id %>" name="user_info_id" /> 
 			<button class="moxo_btn moxo_outlined">Cancel</button>
 			<button class="moxo_btn moxo_outlined_negative">Delete</button>

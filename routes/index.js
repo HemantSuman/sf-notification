@@ -12,14 +12,8 @@ router.get('/', function(req, res, next) {
 
   req.where = {'shop_name':shop};
   models['UserInfo'].getFirstValues(req, function (results) {
-    let settingsDataFlag = true;
     let userDataObj = results.dataValues;
-    
-    if(results.dataValues.Settings.length == 0){
-      settingsDataFlag = false;
-    }
-    console.log('settingsDataFlag',userDataObj.Settings[0])
-    res.render('index', { userDataObj:userDataObj, settingsDataFlag:settingsDataFlag });
+    res.render('index', { userDataObj:userDataObj});
   });  
 });
 

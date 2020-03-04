@@ -134,7 +134,7 @@ module.exports = function (sequelize, DataTypes) {
     };
     myModel.saveAllValues = function (req, res) {
         var users_info_settings = myModel.hasMany(sequelize.models.Setting, {as: 'settings_val',foreignKey: 'user_info_id'});
-        var users_info_settings_draft = myModel.hasMany(sequelize.models.Setting, {as: 'settings_draft_val',foreignKey: 'user_info_id'});
+        var users_info_settings_draft = myModel.hasMany(sequelize.models.Settingdraft, {as: 'settings_draft_val',foreignKey: 'user_info_id'});
          myModel.create(req.body, {
             include: [
                 users_info_settings,
@@ -182,7 +182,7 @@ module.exports = function (sequelize, DataTypes) {
     myModel.getFirstValues = function (req, res) {
 
         var users_info_settings = myModel.hasMany(sequelize.models.Setting, {foreignKey: 'user_info_id'});
-        var users_info_settings_draft = myModel.hasMany(sequelize.models.Setting, {foreignKey: 'user_info_id'});
+        var users_info_settings_draft = myModel.hasMany(sequelize.models.Settingdraft, {foreignKey: 'user_info_id'});
         myModel.findOne(
                 {
                     where: req.where,

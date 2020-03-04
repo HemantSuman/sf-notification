@@ -32,10 +32,12 @@ jQuery(document).ready(function(){
 		var CountdownType = $("input[name=CountdownType]").val();
 		var CountdownTextColor = $("input[name=CountdownTextColor]").val();
 		var user_info_id = $("input[name=user_info_id]").val();
-		var id = $("input[name=id]").val();
+		var settings_id = $("input[name=settings_id]").val();
+		var settingdraft_id = $("input[name=settingdraft_id]").val();
 		var shop_name = $("input[name=shop_name]").val();
 		var formData = {
-			id:id,
+			settings_id:settings_id,
+			settingdraft_id:settingdraft_id,
 			user_info_id:user_info_id,
 			shop_name:shop_name,
 			done:'done',
