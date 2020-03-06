@@ -2,11 +2,12 @@ jQuery(document).ready(function(){
 	console.log('$$$$$$$');
 	$(document).on('click', '#notification_done_btn', function(){
 		console.log('#@#@@@@@@@@@@@@');
+		var BackgroundColor = $("input[name=BackgroundColor]").val();
 		var TitleFontFamily = $("input[name=TitleFontFamily]").val().replace(/\+/g, ' ').split(':')[0];
 		var TitleFontsize = $("input[name=TitleFontsize]").val()+ "px";
-		var TitleTextColor = '#'+$("input[name=TitleTextColor]").val();
+		var TitleTextColor = $("input[name=TitleTextColor]").val();
 
-		var TitleBGColor = '#'+$("input[name=TitleBGColor]").val();
+		var TitleBGColor = $("input[name=TitleBGColor]").val();
 		var textarea1 = $("input[name=textarea1]").val();
 		var MessageFontFamily = $("input[name=MessageFontFamily]").val();
 		var MessageFontSize = $("input[name=MessageFontSize]").val();
@@ -18,13 +19,13 @@ jQuery(document).ready(function(){
 		var ButtonFontsize = $("input[name=ButtonFontsize]").val();
 		var BtnTextColor = $("input[name=BtnTextColor]").val();
 		var BtnBGColor = $("input[name=BtnBGColor]").val();
-		var Buttonstyles = $("input[name=Buttonstyles]").val();
+		var Buttonstyles = $("select[name=Buttonstyles]").val();
 		var BtnButtonRadius = $("input[name=BtnButtonRadius]").val();
-		var EnableDisableCloseButton = $("input[name=EnableDisableCloseButton]").val();
+		var EnableDisableCloseButton = $("input[name=EnableDisableCloseButton]").is(":checked");
 		var Icons = $("input[name=Icons]").val();
 		var CloseBtnTextColor = $("input[name=CloseBtnTextColor]").val();
 		var CloseBtnBgColor = $("input[name=CloseBtnBgColor]").val();
-		var CloseButtonType = $("input[name=CloseButtonType]").val();
+		var CloseButtonType = $("select[name=CloseButtonType]").val();
 		var ButtonRadius = $("input[name=ButtonRadius]").val();
 		var EnableDisableCountdownSection = $("input[name=EnableDisableCountdownSection]").val();
 		var StartTime = $("input[name=StartTime]").val();
@@ -35,6 +36,7 @@ jQuery(document).ready(function(){
 		var settings_id = $("input[name=settings_id]").val();
 		var settingdraft_id = $("input[name=settingdraft_id]").val();
 		var shop_name = $("input[name=shop_name]").val();
+
 		var formData = {
 			settings_id:settings_id,
 			settingdraft_id:settingdraft_id,
@@ -43,6 +45,7 @@ jQuery(document).ready(function(){
 			done:'done',
 			'title': $('#ttl').val(),
 			textarea1: $('#textarea1').html(),
+			BackgroundColor:BackgroundColor,
 			TitleFontFamily:TitleFontFamily,
 			TitleFontsize:TitleFontsize,
 			TitleTextColor:TitleTextColor,
@@ -74,7 +77,7 @@ jQuery(document).ready(function(){
 		};
 
 		// var datastring = $("#settingForm").serialize();
-		// console.log('#@#@', $('#textarea1').html());
+		console.log('#@#@', EnableDisableCloseButton);
 		$.ajax({
 			url: '/shopify/save-settings',
 			data: formData,

@@ -24,7 +24,9 @@
 	<div class="preview-card fixed">
 		<p>PREVIEW</p>
 		<div id="bar" class="moxo_bar fixed">
-			<div id="holder" class="moxo_holder">
+			<div id="holder"
+			style = "background-color:#<%=userDataObj.Settingdrafts[0].BackgroundColor%>"
+			class="moxo_holder">
 				<div class="countdown style1">
 					<div class="timer day"><span class="countdown_value">07</span> <span class="countdown_label">Day</span></div>
 					<div class="timer hours"><span class="countdown_value">01</span> <span class="countdown_label">Hours</span></div>
@@ -33,17 +35,42 @@
 				<div class="moxo-textbar">
 					<span
 					style = "font-family:'<%= userDataObj.Settingdrafts[0].TitleFontFamily%>';
-					font-size:<%=userDataObj.Settingdrafts[0].TitleFontsize%>;
-					color:<%=userDataObj.Settingdrafts[0].TitleTextColor%>;
-					background-color:<%=userDataObj.Settingdrafts[0].TitleBGColor%>"
+					font-size:<%=userDataObj.Settingdrafts[0].TitleFontsize%>px;
+					color:#<%=userDataObj.Settingdrafts[0].TitleTextColor%>;
+					background-color:#<%=userDataObj.Settingdrafts[0].TitleBGColor%>"
 
 					id="title" name="title" class="moxo_title"><%= userDataObj.Settingdrafts[0].title %></span
 						>
-					<span id="message" class="moxo_message moxo_message_cta"><%- userDataObj.Settingdrafts[0].textarea1 %></span>
+					<span 
+					style = "font-family:'<%= userDataObj.Settingdrafts[0].MessageFontFamily%>';
+					font-size:<%=userDataObj.Settingdrafts[0].MessageFontSize%>px;
+					color:#<%=userDataObj.Settingdrafts[0].MessageTextColor%>;
+					background-color:#<%=userDataObj.Settingdrafts[0].MessageBGColor%>"
+
+					id="message" class="moxo_message moxo_message_cta"><%- userDataObj.Settingdrafts[0].textarea1 %></span>
 				</div>
-				<div class="moxo_btn_holder"><a id="button" class="moxo_bar_btn minimal">Learn More</a></div>			
+				<div class="moxo_btn_holder">
+					<a id="button" href="<%= userDataObj.Settingdrafts[0].ButtonURL%>" 
+						style = "font-family:'<%= userDataObj.Settingdrafts[0].ButtonFontFamily%>';
+								font-size:<%=userDataObj.Settingdrafts[0].ButtonFontsize%>px;
+								color:#<%=userDataObj.Settingdrafts[0].BtnTextColor%>;
+								background-color:#<%=userDataObj.Settingdrafts[0].BtnBGColor%>;
+								border-radius:<%=userDataObj.Settingdrafts[0].BtnButtonRadius%>px"
+						class="moxo_bar_btn <%=userDataObj.Settingdrafts[0].Buttonstyles%>">
+						<%= userDataObj.Settingdrafts[0].ButtonLabel%>
+					</a>
+				</div>			
 			</div>
-			<div id="notiClose" class="moxo_closebar minimal"><i id="notiCloseColor" class="icon-cancel"></i></div>
+			<div id="notiClose"
+			style = "color:#<%=userDataObj.Settingdrafts[0].CloseBtnBgColor%>;
+			border-radius:<%=userDataObj.Settingdrafts[0].ButtonRadius%>px;
+			display:<%=userDataObj.Settingdrafts[0].EnableDisableCloseButton == 'on' ? 'block' : 'none' %>"
+			class="moxo_closebar <%=userDataObj.Settingdrafts[0].CloseButtonType%>">
+				<i id="notiCloseColor"
+					style = "color:#<%=userDataObj.Settingdrafts[0].CloseBtnTextColor%>;"
+					class="icon-cancel">
+				</i>
+			</div>
 			<div class="bg-section"></div>
 		</div>
 	</div>
@@ -122,7 +149,7 @@
 							<div class="moxo-row">
 								<div class="moxo-col-6">
 									<span class="moxo-element">Background Color :</span>
-									<input class="jscolor {onFineChange:'holder(this)'}" value="5c6ac4">
+									<input name="BackgroundColor" class="jscolor {onFineChange:'holder(this)'}" value="<%= userDataObj.Settingdrafts[0].BackgroundColor %>">
 								</div>
 								<div class="moxo-col-6">
 									<span class="moxo-element">Background Image :</span>
@@ -163,26 +190,26 @@
 							<div class="moxo-row">
 								<div class="input-field moxo-col-6 mt-4">
 									<span class="moxo-element">Title Font-Family</span>
-									<input name="TitleFontFamily" type="text" class="title_fonts">
+									<input name="TitleFontFamily" type="text" value="<%= userDataObj.Settingdrafts[0].TitleFontFamily%>" class="title_fonts">
 								</div>							
 								<div class="input-field moxo-col-6 mt-4">
 									<span class="moxo-element">Title Font-size</span>
-									<input name="TitleFontsize" class="title_font_size" type="range" min="10" max="20" value="14"  />
+									<input name="TitleFontsize" class="title_font_size" type="range" min="10" max="20" value="<%= userDataObj.Settingdrafts[0].TitleFontsize.replace('px','')%>"  />
 								</div>
 								<div class="input-field moxo-col-6 mt-4">
 									<span class="moxo-element">Title Text Color</span>								
-									<input name="TitleTextColor" class="jscolor {onFineChange:'ttltxt(this)'}" value="f24259">
+									<input name="TitleTextColor" class="jscolor {onFineChange:'ttltxt(this)'}" value="<%= userDataObj.Settingdrafts[0].TitleTextColor%>">
 								</div>
 								<div class="input-field moxo-col-6 mt-4">
 									<span class="moxo-element">Title BG Color</span>	
-									<input name="TitleBGColor" class="jscolor {onFineChange:'ttlbg(this)'}" value="ffffff">
+									<input name="TitleBGColor" class="jscolor {onFineChange:'ttlbg(this)'}" value="<%= userDataObj.Settingdrafts[0].TitleBGColor%>">
 								</div>	
 							</div>
 							
 							<div class="message-content mt-4">
 								<span class="moxo-element"> Message </span>
 								<div class="message-text">								
-									<p id="textarea1" name="textarea1" class="moxo_barText" contenteditable="true"></p>
+									<p id="textarea1" name="textarea1" class="moxo_barText" contenteditable="true"><%= userDataObj.Settingdrafts[0].textarea1%></p>
 									<button class='b_btn moxo_btn'>B</button>
 									<button class='i_btn moxo_btn'>I</button>
 								</div>
@@ -190,19 +217,19 @@
 							<div class="moxo-row">
 								<div class="input-field moxo-col-6 mt-4">
 									<span id="font_p" class="moxo-element">Message Font Family</span>
-									<input name="MessageFontFamily" type="text" class="msg_fonts">								
+									<input name="MessageFontFamily" type="text" value="<%= userDataObj.Settingdrafts[0].MessageFontFamily%>" class="msg_fonts">								
 								</div>
 								<div class="input-field moxo-col-6 mt-4">
 									<span class="moxo-element">Message Font Size</span>
-									<input name="MessageFontSize" class="msg_font_size" type="range" min="10" max="20" value="14"  />								
+									<input name="MessageFontSize" class="msg_font_size" type="range" min="10" max="20" value="<%= userDataObj.Settingdrafts[0].MessageFontSize.replace('px','')%>"  />								
 								</div>
 								<div class="input-field moxo-col-6 mt-4">
 									<span class="moxo-element">Message Text Color</span>
-									<input name="MessageTextColor" class="jscolor {onFineChange:'msgtxt(this)'}" value="ffffff">								
+									<input name="MessageTextColor" class="jscolor {onFineChange:'msgtxt(this)'}" value="<%= userDataObj.Settingdrafts[0].MessageTextColor%>">								
 								</div>
 								<div class="input-field moxo-col-6 mt-4">
 									<span class="moxo-element">Message BG Color</span>
-									<input name="MessageBGColor" class="jscolor {onFineChange:'msgbg(this)'}" value="5c6ac4">							
+									<input name="MessageBGColor" class="jscolor {onFineChange:'msgbg(this)'}" value="<%= userDataObj.Settingdrafts[0].MessageBGColor%>">							
 								</div>										
 							</div>
 						</div>							
@@ -221,42 +248,42 @@
 							<div class="moxo-row">	
 								<div class="button-text moxo-col-6 mb-4">
 									<span class="moxo-element"> Button Label</span>	
-									<input name="ButtonLabel" id="btn" type="text" placeholder="Button Text"  class="btn-text validate">
+									<input value="<%= userDataObj.Settingdrafts[0].ButtonLabel%>" name="ButtonLabel" id="btn" type="text" placeholder="Button Text"  class="btn-text validate">
 								</div>
 								<div class="button-text moxo-col-6 mb-4">
 									<span class="moxo-element"> Button URL</span>
-									<input name="ButtonURL" id="btn-url" placeholder="Button URL" type="text" class="btn-url validate">
+									<input value="<%= userDataObj.Settingdrafts[0].ButtonURL%>" name="ButtonURL" id="btn-url" placeholder="Button URL" type="text" class="btn-url validate">
 								</div>
 							</div>
 							<div class="moxo-row">
 								<div class="moxo-col-6 mb-4">
 									<span class="moxo-element">Button Font-Family</span>
-									<input name="ButtonFontFamily" type="text" class="btn_fonts">									
+									<input value="<%= userDataObj.Settingdrafts[0].ButtonFontFamily%>" name="ButtonFontFamily" type="text" class="btn_fonts">									
 								</div>
 								<div class="moxo-col-6 mb-4">
 									<span class="moxo-element">Button Font-size</span>
-									<input name="ButtonFontsize" class="btn_font_size" type="range" min="10" max="20" value="14"  />
+									<input name="ButtonFontsize" class="btn_font_size" type="range" min="10" max="20" value="<%= userDataObj.Settingdrafts[0].ButtonFontsize%>"  />
 								</div>
 								<div class="button-color moxo-col-md-3 moxo-col-6 mt-auto">
 									<span class="moxo-element">Text Color</span>
-									<input name="BtnTextColor" class="jscolor {onFineChange:'btntxt(this)'}" value="ffffff">
+									<input name="BtnTextColor" class="jscolor {onFineChange:'btntxt(this)'}" value="<%= userDataObj.Settingdrafts[0].BtnTextColor%>">
 								</div>
 								<div class="button-color moxo-col-md-3 moxo-col-6 mt-auto">
 									<span class="moxo-element">BG Color</span>
-									<input name="BtnBGColor" class="jscolor {onFineChange:'btnbg(this)'}" value="f24259">
+									<input name="BtnBGColor" class="jscolor {onFineChange:'btnbg(this)'}" value="<%= userDataObj.Settingdrafts[0].BtnBGColor%>">
 								</div>
 								<div class="button-bg-color moxo-col-6">
 									<span class="moxo-element">Button styles</span>
 									<select name="Buttonstyles" class="browser-default btn_style">
 										<option selected>Choose your option </option>
-										<option>minimal</option>
-										<option>fill</option>
-										<option>outline</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Buttonstyles == 'minimal' ? 'selected' : '' %>" value="minimal">minimal</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Buttonstyles == 'fill' ? 'selected' : '' %>" value="fill">fill</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Buttonstyles == 'outline' ? 'selected' : '' %>" value="outline">outline</option>
 									</select>									
 								</div>	
 								<div class="moxo-col-6 mt-4">
 									<span class="moxo-element">Button Radius</span>
-									<input name="BtnButtonRadius" class="btn_radius" type="range" min="0" max="25" value="5"  />
+									<input name="BtnButtonRadius" class="btn_radius" type="range" min="0" max="25" value="<%= userDataObj.Settingdrafts[0].BtnButtonRadius%>"  />
 								</div>
 							</div>						
 						</div>
@@ -277,7 +304,7 @@
 								<span class="tagline">Enable/Disable Close Button</span>
 								<label>
 									Off
-									<input name="EnableDisableCloseButton" type="checkbox" class="notiClose_toggle" checked>
+									<input <%- userDataObj.Settingdrafts[0].EnableDisableCloseButton == 'true' ? 'checked' : '' %> name="EnableDisableCloseButton" type="checkbox" class="notiClose_toggle">
 									<span class="lever"></span>
 									On
 								</label>
@@ -287,50 +314,50 @@
 									<span class="moxo-element">Icon's</span>
 									<select name="Icons" class="browser-default e1_element" name="e1_element">
 										<option value="">No icon</option>
-										<option>icon-user</option>
-										<option>icon-search</option>
-										<option>icon-right-dir</option>
-										<option>icon-star</option>
-										<option>icon-cancel</option>
-										<option>icon-help-circled</option>
-										<option>icon-info-circled</option>
-										<option>icon-eye</option>
-										<option>icon-tag</option>
-										<option>icon-bookmark</option>
-										<option>icon-heart</option>
-										<option>icon-thumbs-down-alt</option>
-										<option>icon-upload-cloud</option>
-										<option>icon-phone-squared</option>
-										<option>icon-cog</option>
-										<option>icon-wrench</option>
-										<option>icon-volume-down</option>
-										<option>icon-down-dir</option>
-										<option>icon-up-dir</option>
-										<option>icon-left-dir</option>
-										<option>icon-thumbs-up-alt</option>
+										<option value="icon-user">icon-user</option>
+										<option value="icon-search">icon-search</option>
+										<option value="icon-right-dir">icon-right-dir</option>
+										<option value="icon-star">icon-star</option>
+										<option value="icon-cancel">icon-cancel</option>
+										<option value="icon-help-circled">icon-help-circled</option>
+										<option value="icon-info-circled">icon-info-circled</option>
+										<option value="icon-eye">icon-eye</option>
+										<option value="icon-tag">icon-tag</option>
+										<option value="icon-bookmark">icon-bookmark</option>
+										<option value="icon-heart">icon-heart</option>
+										<option value="icon-thumbs-down-alt">icon-thumbs-down-alt</option>
+										<option value="icon-upload-cloud">icon-upload-cloud</option>
+										<option value="icon-phone-squared">icon-phone-squared</option>
+										<option value="icon-cog">icon-cog</option>
+										<option value="icon-wrench">icon-wrench</option>
+										<option value="icon-volume-down">icon-volume-down</option>
+										<option value="icon-down-dir">icon-down-dir</option>
+										<option value="icon-up-dir">icon-up-dir</option>
+										<option value="icon-left-dir">icon-left-dir</option>
+										<option value="icon-thumbs-up-alt">icon-thumbs-up-alt</option>
 									</select>
 										
 								</div>
 								<div class="button-color moxo-col-md-2 moxo-col-6 mt-auto">
 									<span class="moxo-element">Text Color</span>
-									<input name="CloseBtnTextColor" class="jscolor {onFineChange:'btn_close_txt(this)'}" value="ffffff">
+									<input name="CloseBtnTextColor" class="jscolor {onFineChange:'btn_close_txt(this)'}" value="<%= userDataObj.Settingdrafts[0].CloseBtnTextColor%>">
 								</div>
 								<div class="button-color moxo-col-md-2 moxo-col-6 mt-auto">
 									<span class="moxo-element">BG Color</span>
-									<input name="CloseBtnBgColor" class="jscolor {onFineChange:'btn_close_bg(this)'}" value="f24259">
+									<input name="CloseBtnBgColor" class="jscolor {onFineChange:'btn_close_bg(this)'}" value="<%= userDataObj.Settingdrafts[0].CloseBtnBgColor%>">
 								</div>
 								<div class="moxo-col-6 mt-3">
 									<span class="moxo-element"> Close Button Type</span>
 									<select name="CloseButtonType" class="browser-default btn_close_style">
 										<option selected>Choose your option </option>
-										<option>minimal</option>
-										<option>fill</option>
-										<option>outline</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].CloseButtonType == 'minimal' ? 'selected' : '' %>" value="minimal">minimal</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].CloseButtonType == 'fill' ? 'selected' : '' %>" value="fill">fill</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].CloseButtonType == 'outline' ? 'selected' : '' %>" value="outline">outline</option>
 									</select>	
 								</div>
 								<div class="moxo-col-6 mt-4">
 									<span class="moxo-element">Button Radius</span>
-									<input name="ButtonRadius" class="btn_close_radius" type="range" min="0" max="25" value="0"  />
+									<input name="ButtonRadius" class="btn_close_radius" type="range" min="0" max="25" value="<%= userDataObj.Settingdrafts[0].ButtonRadius%>"  />
 								</div>
 							</div>								
 						</div>					
@@ -350,7 +377,7 @@
 								<span class="tagline">Enable/Disable Countdown Section</span>
 								<label>
 									Off
-									<input name="EnableDisableCountdownSection" type="checkbox" class="notiCountdown_toggle" checked>
+									<input value="<%= userDataObj.Settingdrafts[0].EnableDisableCountdownSection%>" name="EnableDisableCountdownSection" type="checkbox" class="notiCountdown_toggle" checked>
 									<span class="lever"></span>
 									On
 								</label>
@@ -358,11 +385,11 @@
 							<div class="moxo-row mt-3">
 								<div class="moxo-col-md-6 moxo-col-12 mb-4">
 									<span class="moxo-element">Start Time </span>
-									<input name="StartTime" type="text" id="datetime" class="date_start"  placeholder="Select Date" >
+									<input value="<%= userDataObj.Settingdrafts[0].StartTime%>" name="StartTime" type="text" id="datetime" class="date_start"  placeholder="Select Date" >
 								</div>
 								<div class="moxo-col-md-6 moxo-col-12 mb-4">
 									<span class="moxo-element">End Time </span>
-									<input name="EndTime" type="text" id="datetimeEnd" class="date_end" placeholder="Select Date">
+									<input value="<%= userDataObj.Settingdrafts[0].EndTime%>" name="EndTime" type="text" id="datetimeEnd" class="date_end" placeholder="Select Date">
 								</div>									
 							</div>
 							<div class="moxo-row">
@@ -378,7 +405,7 @@
 								</div>
 								<div class="moxo-col-6 mt-auto">
 									<span class="moxo-element">Text Color</span>
-									<input name="CountdownTextColor" class="jscolor {onFineChange:'update(this)'}" value="5c6ac4">
+									<input name="CountdownTextColor" class="jscolor {onFineChange:'update(this)'}" value="<%= userDataObj.Settingdrafts[0].CountdownTextColor%>">
 								</div>
 							</div>
 						</div>					
@@ -427,5 +454,13 @@
 	<script type="text/javascript" src="js/countdown.js"></script>
 	<script type="text/javascript" src="js/custom-app.js"></script>
 	<script type="text/javascript" src="js/admin-app.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function(){
+			// console.log('#@',userDataObj)
+			
+			// let aa = userDataObj.Settingdrafts[0].TitleFontFamily;
+			// $('.moxo_title').css('font-family', userDataObj.Settingdrafts[0].TitleFontFamily);
+		});
+	</script>
 </body>
 </html>

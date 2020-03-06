@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
   req.where = {'shop_name':shop};
   models['UserInfo'].getFirstValues(req, function (results) {
     let userDataObj = results.dataValues;
+    console.log('userDataObjuserDataObj', userDataObj.Settingdrafts[0])
     res.render('index', { userDataObj:userDataObj});
   });  
 });
