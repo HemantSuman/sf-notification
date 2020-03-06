@@ -21,7 +21,9 @@
 
 <body>
 		
-	<div class="preview-card fixed">
+	<div
+	style = "display:<%= userDataObj.Settingdrafts[0].EnableDisableNotificationBar == 'true' ? 'block' : 'none' %>"
+	class="preview-card fixed">
 		<p>PREVIEW</p>
 		<div id="bar" class="moxo_bar fixed">
 			<div id="holder"
@@ -64,16 +66,17 @@
 			<div id="notiClose"
 			style = "color:#<%=userDataObj.Settingdrafts[0].CloseBtnBgColor%>;
 			border-radius:<%=userDataObj.Settingdrafts[0].ButtonRadius%>px;
-			display:<%=userDataObj.Settingdrafts[0].EnableDisableCloseButton == 'on' ? 'block' : 'none' %>"
+			display:<%= userDataObj.Settingdrafts[0].EnableDisableCloseButton == 'true' ? 'block' : 'none' %>"
 			class="moxo_closebar <%=userDataObj.Settingdrafts[0].CloseButtonType%>">
 				<i id="notiCloseColor"
 					style = "color:#<%=userDataObj.Settingdrafts[0].CloseBtnTextColor%>;"
-					class="icon-cancel">
+					class="<%=userDataObj.Settingdrafts[0].Icons%>">
 				</i>
 			</div>
 			<div class="bg-section"></div>
 		</div>
-	</div>
+	</div
+	>
 	<!-- /sf-notification/shopify/save-settings -->
 	<form action="javascript:void(0)" method="post" id="settingForm" >
 		<div class="moxo-container moxo-wrapper">
@@ -98,7 +101,7 @@
 								<span class="moxo-element">Enable/Disable Notification Bar</span>
 								<label>
 									Off
-									<input type="checkbox" class="notiMain_toggle" checked>
+									<input name="EnableDisableNotificationBar" type="checkbox" class="notiMain_toggle">
 									<span class="lever"></span>
 									On
 								</label>
@@ -194,7 +197,7 @@
 								</div>							
 								<div class="input-field moxo-col-6 mt-4">
 									<span class="moxo-element">Title Font-size</span>
-									<input name="TitleFontsize" class="title_font_size" type="range" min="10" max="20" value="<%= userDataObj.Settingdrafts[0].TitleFontsize.replace('px','')%>"  />
+									<input name="TitleFontsize" class="title_font_size" type="range" min="10" max="20" value="<%= userDataObj.Settingdrafts[0].TitleFontsize ? userDataObj.Settingdrafts[0].TitleFontsize.replace('px','') : ''%>"  />
 								</div>
 								<div class="input-field moxo-col-6 mt-4">
 									<span class="moxo-element">Title Text Color</span>								
@@ -221,7 +224,7 @@
 								</div>
 								<div class="input-field moxo-col-6 mt-4">
 									<span class="moxo-element">Message Font Size</span>
-									<input name="MessageFontSize" class="msg_font_size" type="range" min="10" max="20" value="<%= userDataObj.Settingdrafts[0].MessageFontSize.replace('px','')%>"  />								
+									<input name="MessageFontSize" class="msg_font_size" type="range" min="10" max="20" value="<%= userDataObj.Settingdrafts[0].MessageFontSize ? userDataObj.Settingdrafts[0].MessageFontSize.replace('px','') : ''%>"  />								
 								</div>
 								<div class="input-field moxo-col-6 mt-4">
 									<span class="moxo-element">Message Text Color</span>
@@ -314,27 +317,27 @@
 									<span class="moxo-element">Icon's</span>
 									<select name="Icons" class="browser-default e1_element" name="e1_element">
 										<option value="">No icon</option>
-										<option value="icon-user">icon-user</option>
-										<option value="icon-search">icon-search</option>
-										<option value="icon-right-dir">icon-right-dir</option>
-										<option value="icon-star">icon-star</option>
-										<option value="icon-cancel">icon-cancel</option>
-										<option value="icon-help-circled">icon-help-circled</option>
-										<option value="icon-info-circled">icon-info-circled</option>
-										<option value="icon-eye">icon-eye</option>
-										<option value="icon-tag">icon-tag</option>
-										<option value="icon-bookmark">icon-bookmark</option>
-										<option value="icon-heart">icon-heart</option>
-										<option value="icon-thumbs-down-alt">icon-thumbs-down-alt</option>
-										<option value="icon-upload-cloud">icon-upload-cloud</option>
-										<option value="icon-phone-squared">icon-phone-squared</option>
-										<option value="icon-cog">icon-cog</option>
-										<option value="icon-wrench">icon-wrench</option>
-										<option value="icon-volume-down">icon-volume-down</option>
-										<option value="icon-down-dir">icon-down-dir</option>
-										<option value="icon-up-dir">icon-up-dir</option>
-										<option value="icon-left-dir">icon-left-dir</option>
-										<option value="icon-thumbs-up-alt">icon-thumbs-up-alt</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-user' ? 'selected' : '' %>" value="icon-user">icon-user</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-search' ? 'selected' : '' %>" value="icon-search">icon-search</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-right-dir' ? 'selected' : '' %>" value="icon-right-dir">icon-right-dir</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-star' ? 'selected' : '' %>" value="icon-star">icon-star</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-cancel' ? 'selected' : '' %>" value="icon-cancel">icon-cancel</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-help-circled' ? 'selected' : '' %>" value="icon-help-circled">icon-help-circled</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-info-circled' ? 'selected' : '' %>" value="icon-info-circled">icon-info-circled</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-eye' ? 'selected' : '' %>" value="icon-eye">icon-eye</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-tag' ? 'selected' : '' %>" value="icon-tag">icon-tag</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-bookmark' ? 'selected' : '' %>" value="icon-bookmark">icon-bookmark</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-heart' ? 'selected' : '' %>" value="icon-heart">icon-heart</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-thumbs-down-alt' ? 'selected' : '' %>" value="icon-thumbs-down-alt">icon-thumbs-down-alt</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-upload-cloud' ? 'selected' : '' %>" value="icon-upload-cloud">icon-upload-cloud</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-phone-squared' ? 'selected' : '' %>" value="icon-phone-squared">icon-phone-squared</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-cog' ? 'selected' : '' %>" value="icon-cog">icon-cog</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-wrench' ? 'selected' : '' %>" value="icon-wrench">icon-wrench</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-volume-down' ? 'selected' : '' %>" value="icon-volume-down">icon-volume-down</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-down-dir' ? 'selected' : '' %>" value="icon-down-dir">icon-down-dir</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-up-dir' ? 'selected' : '' %>" value="icon-up-dir">icon-up-dir</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-left-dir' ? 'selected' : '' %>" value="icon-left-dir">icon-left-dir</option>
+										<option selected="<%=userDataObj.Settingdrafts[0].Icons == 'icon-thumbs-up-alt' ? 'selected' : '' %>" value="icon-thumbs-up-alt">icon-thumbs-up-alt</option>
 									</select>
 										
 								</div>
@@ -433,7 +436,7 @@
 			<button class="moxo_btn moxo_outlined">Cancel</button>
 			<button class="moxo_btn moxo_outlined_negative">Delete</button>
 			<!---->
-			<button name="published" value="published" class="moxo_btn moxo_outlined moxo_publish">Published</button>
+			<button id="notification_published_btn" name="published" value="published" class="moxo_btn moxo_outlined moxo_publish">Published</button>
 			<button id="notification_done_btn" name="done" value="done" class="moxo_btn moxo_publish_active">Done</button>
 		</div>
 	</form>

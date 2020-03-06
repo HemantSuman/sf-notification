@@ -1,14 +1,23 @@
 jQuery(document).ready(function(){
-	console.log('$$$$$$$');
+
 	$(document).on('click', '#notification_done_btn', function(){
-		console.log('#@#@@@@@@@@@@@@');
+		saveSubmitForm('done')
+	});
+
+	$(document).on('click', '#notification_published_btn', function(){
+		saveSubmitForm('published')
+	});
+
+	function saveSubmitForm(action){
+
+		var EnableDisableNotificationBar = $("input[name=EnableDisableNotificationBar]").is(":checked");
 		var BackgroundColor = $("input[name=BackgroundColor]").val();
 		var TitleFontFamily = $("input[name=TitleFontFamily]").val().replace(/\+/g, ' ').split(':')[0];
 		var TitleFontsize = $("input[name=TitleFontsize]").val()+ "px";
 		var TitleTextColor = $("input[name=TitleTextColor]").val();
 
 		var TitleBGColor = $("input[name=TitleBGColor]").val();
-		var textarea1 = $("input[name=textarea1]").val();
+		// var textarea1 = $("input[name=textarea1]").val();
 		var MessageFontFamily = $("input[name=MessageFontFamily]").val();
 		var MessageFontSize = $("input[name=MessageFontSize]").val();
 		var MessageTextColor = $("input[name=MessageTextColor]").val();
@@ -22,7 +31,7 @@ jQuery(document).ready(function(){
 		var Buttonstyles = $("select[name=Buttonstyles]").val();
 		var BtnButtonRadius = $("input[name=BtnButtonRadius]").val();
 		var EnableDisableCloseButton = $("input[name=EnableDisableCloseButton]").is(":checked");
-		var Icons = $("input[name=Icons]").val();
+		var Icons = $("select[name=Icons]").val();
 		var CloseBtnTextColor = $("input[name=CloseBtnTextColor]").val();
 		var CloseBtnBgColor = $("input[name=CloseBtnBgColor]").val();
 		var CloseButtonType = $("select[name=CloseButtonType]").val();
@@ -42,15 +51,15 @@ jQuery(document).ready(function(){
 			settingdraft_id:settingdraft_id,
 			user_info_id:user_info_id,
 			shop_name:shop_name,
-			done:'done',
+			action:action,
 			'title': $('#ttl').val(),
 			textarea1: $('#textarea1').html(),
+			EnableDisableNotificationBar:EnableDisableNotificationBar,
 			BackgroundColor:BackgroundColor,
 			TitleFontFamily:TitleFontFamily,
 			TitleFontsize:TitleFontsize,
 			TitleTextColor:TitleTextColor,
 			TitleBGColor:TitleBGColor,
-			// textarea1:textarea1,
 			MessageFontFamily:MessageFontFamily,
 			MessageFontSize:MessageFontSize,
 			MessageTextColor:MessageTextColor,
@@ -76,8 +85,6 @@ jQuery(document).ready(function(){
 			CountdownTextColor:CountdownTextColor,
 		};
 
-		// var datastring = $("#settingForm").serialize();
-		console.log('#@#@', EnableDisableCloseButton);
 		$.ajax({
 			url: '/shopify/save-settings',
 			data: formData,
@@ -92,6 +99,7 @@ jQuery(document).ready(function(){
 			}
 
 		});
-    });
+	}
 
+		
 });

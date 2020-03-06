@@ -9,7 +9,6 @@ const nonce = require('nonce')();
 const querystring = require('querystring');
 const request = require('request-promise');
 var modelName = 'User';
-console.log('process.env.SHOPIFY_API_KEY', process.env)
 const apiKey = process.env.SHOPIFY_API_KEY;
 const apiSecret = process.env.SHOPIFY_API_SECRET;
 // const accessTokenKey = process.env.ACCESS_TOKEN;
@@ -23,7 +22,6 @@ router.get('/', function (req, res, next) {
   if (shop) {
     req.where = {'shop_name':shop};
     models['UserInfo'].getAllValues(req, function (results) {
-      console.log('resultsresults',results, results.length)
       if (results.length == 0) {
         const state = nonce();
         const redirectUri = forwardingAddress + '/shopify/callback';
@@ -35,9 +33,7 @@ router.get('/', function (req, res, next) {
 
         res.cookie('state', state);
         res.redirect(installUrl);
-        console.log('installUrl', apiKey,installUrl)
       } else {
-        console.log('111')
         res.redirect('/sf-notification');        
       }
     });    
@@ -109,7 +105,9 @@ router.get('/callback', (req, res) => {
                   access_token: accessToken
                 };
       req.body.settings_val = {};
+      // req.body.settings_val.EnableDisableNotificationBar = true;
       req.body.settings_draft_val = {};
+      // req.body.settings_draft_val.EnableDisableNotificationBar = true;
       models['UserInfo'].saveAllValues(req, function (results1) {
         // res.redirect('/');
         //request webhooks when app uninstalled
@@ -379,23 +377,13 @@ router.post('/uninstall-web-hooks', function (req, res, next) {
 
 router.post('/save-settings', function (req, res, next) {
 
-  console.log('req.bodyreq.body', req.body);
-  if(req.body.done && req.body.done == 'done'){
-    // if(req.body.id && req.body.id > 0){
+  if(req.body.action && req.body.action == 'done'){
       req.where = {id:req.body.settingdraft_id};
       delete req.body.settingdraft_id;
       models['Settingdraft'].updateAllValues(req, function (results) {
         res.redirect('/sf-notification'); 
-        // res.json(results.status);
       });
-    // } else {
-    //   models['Setting'].saveAllValues(req, function (results) {
-    //     res.redirect('/sf-notification');
-    //     // res.json(results.status);
-    //   });
-    // }
-  } else if(req.body.published && req.body.published == 'published'){
-    // if(req.body.id && req.body.id > 0){
+  } else if(req.body.action && req.body.action == 'published'){
       let settingId = req.body.settings_id;
       let settingDraftId = req.body.settingdraft_id;
 
@@ -414,15 +402,6 @@ router.post('/save-settings', function (req, res, next) {
         });
         res.redirect('/sf-notification'); 
       });
-
-      
-    // } else {
-    //   req.body.status = true;
-    //   models['Setting'].saveAllValues(req, function (results) {
-    //     res.redirect('/sf-notification');
-    //     // res.json(results.status);
-    //   });
-    // }
   }
 });
 

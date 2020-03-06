@@ -6,7 +6,6 @@ var models = require('../models');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(req.query.shop);
   let shop = req.query.shop;
   // let shop = 'hemant-test-store-001.myshopify.com';
 

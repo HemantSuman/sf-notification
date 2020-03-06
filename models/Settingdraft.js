@@ -18,6 +18,14 @@ module.exports = function (sequelize, DataTypes) {
                 //     },
                 // }
             },
+            EnableDisableNotificationBar: {
+                type: DataTypes.STRING,
+                // validate: {
+                //     notEmpty: {
+                //         msg: i18n_Validation.__('required')
+                //     },
+                // }
+            },            
             BackgroundColor: {
                 type: DataTypes.STRING,
                 // validate: {
