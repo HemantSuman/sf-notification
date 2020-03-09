@@ -1,5 +1,6 @@
 jQuery(document).ready(function(){
 
+	var root_url = $("input[name=root_url]").val();
 	$(document).on('click', '#notification_done_btn', function(){
 		saveSubmitForm('done')
 	});
@@ -86,7 +87,7 @@ jQuery(document).ready(function(){
 		};
 
 		$.ajax({
-			url: '/sf-notification/shopify/save-settings',
+			url: root_url+'shopify/save-settings',
 			data: formData,
 			dataType: "json",
 			method: "POST",

@@ -212,7 +212,7 @@
 							<div class="message-content mt-4">
 								<span class="moxo-element"> Message </span>
 								<div class="message-text">								
-									<p id="textarea1" name="textarea1" class="moxo_barText" contenteditable="true"><%= userDataObj.Settingdrafts[0].textarea1%></p>
+									<p id="textarea1" name="textarea1" class="moxo_barText" contenteditable="true"><%- userDataObj.Settingdrafts[0].textarea1%></p>
 									<button class='b_btn moxo_btn'>B</button>
 									<button class='i_btn moxo_btn'>I</button>
 								</div>
@@ -465,5 +465,6 @@
 			// $('.moxo_title').css('font-family', userDataObj.Settingdrafts[0].TitleFontFamily);
 		});
 	</script>
+	<input type="hidden" name="root_url" value="<%= custom_env.site_settings.root_url%>"
 </body>
 </html>

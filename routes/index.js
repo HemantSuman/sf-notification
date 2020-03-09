@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const request = require('request-promise');
 var models = require('../models');
+var custom_env = require('../config/env');
 // const forwardingAddress = "https://0a14bfb7.ngrok.io";
 
 /* GET home page. */
@@ -13,7 +14,7 @@ router.get('/', function(req, res, next) {
   models['UserInfo'].getFirstValues(req, function (results) {
     let userDataObj = results.dataValues;
     console.log('userDataObjuserDataObj', userDataObj.Settings[0])
-    res.render('index', { userDataObj:userDataObj});
+    res.render('index', { userDataObj:userDataObj, custom_env:custom_env});
   });  
 });
 

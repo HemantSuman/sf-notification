@@ -1,4 +1,5 @@
 const dotenv = require('dotenv').config({path: "../.env"});
+var custom_env = require('../config/env');
 var models = require('../models');
 var express = require('express');
 var router = express.Router();
@@ -34,7 +35,7 @@ router.get('/', function (req, res, next) {
         res.cookie('state', state);
         res.redirect(installUrl);
       } else {
-        res.redirect('/sf-notification');        
+        res.redirect(custom_env.site_settings.root_url);        
       }
     });    
   } else {
@@ -381,7 +382,7 @@ router.post('/save-settings', function (req, res, next) {
       req.where = {id:req.body.settingdraft_id};
       delete req.body.settingdraft_id;
       models['Settingdraft'].updateAllValues(req, function (results) {
-        res.redirect('/sf-notification'); 
+        res.redirect(custom_env.site_settings.root_url); 
       });
   } else if(req.body.action && req.body.action == 'published'){
       let settingId = req.body.settings_id;
@@ -398,9 +399,9 @@ router.post('/save-settings', function (req, res, next) {
         
         req.body.status = true;
         models['Settingdraft'].updateAllValues(req, function (results) {
-          res.redirect('/sf-notification'); 
+          res.redirect(custom_env.site_settings.root_url); 
         });
-        res.redirect('/sf-notification'); 
+        res.redirect(custom_env.site_settings.root_url); 
       });
   }
 });
