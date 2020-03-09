@@ -86,7 +86,7 @@ jQuery(document).ready(function(){
 		};
 
 		$.ajax({
-			url: '/sf-notificatiob/shopify/save-settings',
+			url: '/sf-notification/shopify/save-settings',
 			data: formData,
 			dataType: "json",
 			method: "POST",
