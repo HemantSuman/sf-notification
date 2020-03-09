@@ -54,7 +54,7 @@ jQuery(document).ready(function(){
 			action:action,
 			'title': $('#ttl').val(),
 			textarea1: $('#textarea1').html(),
-			EnableDisableNotificationBar:EnableDisableNotificationBar,
+			EnableDisableNotificationBar:EnableDisableNotificationBar ? 'checked' : null,
 			BackgroundColor:BackgroundColor,
 			TitleFontFamily:TitleFontFamily,
 			TitleFontsize:TitleFontsize,
@@ -72,13 +72,13 @@ jQuery(document).ready(function(){
 			BtnBGColor:BtnBGColor,
 			Buttonstyles:Buttonstyles,
 			BtnButtonRadius:BtnButtonRadius,
-			EnableDisableCloseButton:EnableDisableCloseButton,
+			EnableDisableCloseButton:EnableDisableCloseButton ? 'checked' : null,
 			Icons:Icons,
 			CloseBtnTextColor:CloseBtnTextColor,
 			CloseBtnBgColor:CloseBtnBgColor,
 			CloseButtonType:CloseButtonType,
 			ButtonRadius:ButtonRadius,
-			EnableDisableCountdownSection:EnableDisableCountdownSection,
+			EnableDisableCountdownSection:EnableDisableCountdownSection ? 'checked' : null,
 			StartTime:StartTime,
 			EndTime:EndTime,
 			CountdownType:CountdownType,
@@ -86,7 +86,7 @@ jQuery(document).ready(function(){
 		};
 
 		$.ajax({
-			url: '/sf-notification/shopify/save-settings',
+			url: '/shopify/save-settings',
 			data: formData,
 			dataType: "json",
 			method: "POST",

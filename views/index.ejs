@@ -22,7 +22,7 @@
 <body>
 		
 	<div
-	style = "display:<%= userDataObj.Settingdrafts[0].EnableDisableNotificationBar == 'true' ? 'block' : 'none' %>"
+	style = "display:<%= userDataObj.Settingdrafts[0].EnableDisableNotificationBar == 'checked' ? 'block' : 'none' %>"
 	class="preview-card fixed">
 		<p>PREVIEW</p>
 		<div id="bar" class="moxo_bar fixed">
@@ -66,7 +66,7 @@
 			<div id="notiClose"
 			style = "color:#<%=userDataObj.Settingdrafts[0].CloseBtnBgColor%>;
 			border-radius:<%=userDataObj.Settingdrafts[0].ButtonRadius%>px;
-			display:<%= userDataObj.Settingdrafts[0].EnableDisableCloseButton == 'true' ? 'block' : 'none' %>"
+			display:<%= userDataObj.Settingdrafts[0].EnableDisableCloseButton == 'checked' ? 'block' : 'none' %>"
 			class="moxo_closebar <%=userDataObj.Settingdrafts[0].CloseButtonType%>">
 				<i id="notiCloseColor"
 					style = "color:#<%=userDataObj.Settingdrafts[0].CloseBtnTextColor%>;"
@@ -101,7 +101,7 @@
 								<span class="moxo-element">Enable/Disable Notification Bar</span>
 								<label>
 									Off
-									<input name="EnableDisableNotificationBar" type="checkbox" class="notiMain_toggle">
+									<input <%= userDataObj.Settingdrafts[0].EnableDisableNotificationBar %> name="EnableDisableNotificationBar" type="checkbox" class="notiMain_toggle">
 									<span class="lever"></span>
 									On
 								</label>
@@ -307,7 +307,7 @@
 								<span class="tagline">Enable/Disable Close Button</span>
 								<label>
 									Off
-									<input <%- userDataObj.Settingdrafts[0].EnableDisableCloseButton == 'true' ? 'checked' : '' %> name="EnableDisableCloseButton" type="checkbox" class="notiClose_toggle">
+									<input <%= userDataObj.Settingdrafts[0].EnableDisableCloseButton %> name="EnableDisableCloseButton" type="checkbox" class="notiClose_toggle">
 									<span class="lever"></span>
 									On
 								</label>
