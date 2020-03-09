@@ -111,11 +111,11 @@ router.get('/callback', (req, res) => {
                     access_token: accessToken
                   };
         req.body.settings_val = {};
-        req.body.settings_val = defaultSet[0].EnableDisableNotificationBar;
+        req.body.settings_val = defaultSet[0];
         req.body.settings_val.EnableDisableNotificationBar = null;
 
         req.body.settings_draft_val = {};
-        req.body.settings_draft_val = defaultSet[0].EnableDisableNotificationBar;
+        req.body.settings_draft_val = defaultSet[0];
 
         models['UserInfo'].saveAllValues(req, function (results1) {
           // res.redirect('/');
