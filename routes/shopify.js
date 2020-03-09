@@ -378,11 +378,15 @@ router.post('/uninstall-web-hooks', function (req, res, next) {
 
 router.post('/save-settings', function (req, res, next) {
 
+  responseObj = {};
+  responseObj.status = true;
+  responseObj.message = 'Successfully updated';
+
   if(req.body.action && req.body.action == 'done'){
       req.where = {id:req.body.settingdraft_id};
       delete req.body.settingdraft_id;
       models['Settingdraft'].updateAllValues(req, function (results) {
-        res.redirect(custom_env.site_settings.root_url); 
+        res.json(responseObj);
       });
   } else if(req.body.action && req.body.action == 'published'){
       let settingId = req.body.settings_id;
@@ -399,9 +403,9 @@ router.post('/save-settings', function (req, res, next) {
         
         req.body.status = true;
         models['Settingdraft'].updateAllValues(req, function (results) {
-          res.redirect(custom_env.site_settings.root_url); 
+          res.json(responseObj);
         });
-        res.redirect(custom_env.site_settings.root_url); 
+        res.json(responseObj);
       });
   }
 });
