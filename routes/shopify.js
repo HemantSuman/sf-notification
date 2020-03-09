@@ -54,7 +54,16 @@ router.get('/test', (req, res) => {
   //   console.log(results1);
   // });
   models['Defaultsettings'].getAllValues(req, function (defaultSet) {
-    console.log('defaultSetdefaultSet', defaultSet[0].EnableDisableNotificationBar);
+
+    req.body.settings_val = {};
+    req.body.settings_val = Object.assign({},defaultSet[0].dataValues);
+    req.body.settings_val.EnableDisableNotificationBar = null;
+    delete req.body.settings_val.id;
+    
+    req.body.settings_draft_val = {};
+    req.body.settings_draft_val = Object.assign({},defaultSet[0].dataValues);
+    delete req.body.settings_draft_val.id;
+
   });
 });
 
@@ -104,18 +113,19 @@ router.get('/callback', (req, res) => {
     .then((accessTokenResponse) => {
 
       models['Defaultsettings'].getAllValues(req, function (defaultSet) {
-        console.log('defaultSetdefaultSet', defaultSet[0].EnableDisableNotificationBar);
         let accessToken = accessTokenResponse.access_token;
         req.body = {
                     shop_name: shop,
                     access_token: accessToken
                   };
         req.body.settings_val = {};
-        req.body.settings_val = defaultSet[0];
+        req.body.settings_val = Object.assign({},defaultSet[0].dataValues);
         req.body.settings_val.EnableDisableNotificationBar = null;
-
+        delete req.body.settings_val.id;
+        
         req.body.settings_draft_val = {};
-        req.body.settings_draft_val = defaultSet[0];
+        req.body.settings_draft_val = Object.assign({},defaultSet[0].dataValues);
+        delete req.body.settings_draft_val.id;
 
         models['UserInfo'].saveAllValues(req, function (results1) {
           // res.redirect('/');
