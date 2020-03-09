@@ -1,23 +1,60 @@
 <div class="hemantsuman">
-    <div class="preview-card fixed">
+    <div
+	style = "display:<%= notificationData.EnableDisableNotificationBar == 'true' ? 'block' : 'none' %>"
+	class="preview-card fixed">
 		<p>PREVIEW</p>
 		<div id="bar" class="moxo_bar fixed">
-			<div id="holder" class="moxo_holder">
+			<div id="holder"
+			style = "background-color:#<%=notificationData.BackgroundColor%>"
+			class="moxo_holder">
 				<div class="countdown style1">
 					<div class="timer day"><span class="countdown_value">07</span> <span class="countdown_label">Day</span></div>
 					<div class="timer hours"><span class="countdown_value">01</span> <span class="countdown_label">Hours</span></div>
 					<div class="timer min"><span class="countdown_value">33</span> <span class="countdown_label">Min</span></div>
 					<div class="timer sec"><span class="countdown_value">22</span> <span class="countdown_label">Sec</span></div></div>
 				<div class="moxo-textbar">
-					<span id="title" name="title" value="" class="moxo_title">Latest</span>				
-					<span id="message" class="moxo_message moxo_message_cta">Your Message Goes Here .....</span>
+					<span
+					style = "font-family:'<%= notificationData.TitleFontFamily%>';
+					font-size:<%=notificationData.TitleFontsize%>px;
+					color:#<%=notificationData.TitleTextColor%>;
+					background-color:#<%=notificationData.TitleBGColor%>"
+
+					id="title" name="title" class="moxo_title"><%= notificationData.title %></span
+						>
+					<span 
+					style = "font-family:'<%= notificationData.MessageFontFamily%>';
+					font-size:<%=notificationData.MessageFontSize%>px;
+					color:#<%=notificationData.MessageTextColor%>;
+					background-color:#<%=notificationData.MessageBGColor%>"
+
+					id="message" class="moxo_message moxo_message_cta"><%- notificationData.textarea1 %></span>
 				</div>
-				<div class="moxo_btn_holder"><a id="button" class="moxo_bar_btn minimal">Learn More</a></div>			
+				<div class="moxo_btn_holder">
+					<a id="button" href="<%= notificationData.ButtonURL%>" 
+						style = "font-family:'<%= notificationData.ButtonFontFamily%>';
+								font-size:<%=notificationData.ButtonFontsize%>px;
+								color:#<%=notificationData.BtnTextColor%>;
+								background-color:#<%=notificationData.BtnBGColor%>;
+								border-radius:<%=notificationData.BtnButtonRadius%>px"
+						class="moxo_bar_btn <%=notificationData.Buttonstyles%>">
+						<%= notificationData.ButtonLabel%>
+					</a>
+				</div>			
 			</div>
-			<div id="notiClose" class="moxo_closebar minimal"><i id="notiCloseColor" class="icon-cancel"></i></div>
+			<div id="notiClose"
+			style = "color:#<%=notificationData.CloseBtnBgColor%>;
+			border-radius:<%=notificationData.ButtonRadius%>px;
+			display:<%= notificationData.EnableDisableCloseButton == 'true' ? 'block' : 'none' %>"
+			class="moxo_closebar <%=notificationData.CloseButtonType%>">
+				<i id="notiCloseColor"
+					style = "color:#<%=notificationData.CloseBtnTextColor%>;"
+					class="<%=notificationData.Icons%>">
+				</i>
+			</div>
 			<div class="bg-section"></div>
 		</div>
-	</div>
+	</div
+	>
 </div>
 <style>
 body {
