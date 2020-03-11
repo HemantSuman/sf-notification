@@ -164,7 +164,7 @@ router.get('/callback', (req, res) => {
                 let new_request1 = {
                   "recurring_application_charge": {
                     "name": "New Plan Test 1111111",
-                    "price": 1.0,
+                    "price": 0.01,
                     "return_url": forwardingAddress+"/shopify/recurring_application_charge_return?shop="+shop,
                     "test": true,
                     "trial_days":1
