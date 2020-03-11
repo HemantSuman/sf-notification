@@ -48,13 +48,15 @@ router.get('/test', (req, res) => {
   //   shop_name: 'shop',
   //   access_token: 'accessToken'
   // };
-  // req.body.settings_val = {};
-  // req.body.settings_val['title'] = 'dfgdfgfdgdf';
-  // models['UserInfo'].saveAllValues(req, function (results1) {
-  //   console.log(results1);
-  // });
-  models['Defaultsettings'].getAllValues(req, function (defaultSet) {
+  
+  let shop = req.query.shop;
 
+  models['Defaultsettings'].getAllValues(req, function (defaultSet) {
+    let accessToken = 'accessTokenResponse.access_token';
+    req.body = {
+                shop_name: 'shop',
+                access_token: accessToken
+              };
     req.body.settings_val = {};
     req.body.settings_val = Object.assign({},defaultSet[0].dataValues);
     req.body.settings_val.EnableDisableNotificationBar = null;
@@ -64,7 +66,26 @@ router.get('/test', (req, res) => {
     req.body.settings_draft_val = Object.assign({},defaultSet[0].dataValues);
     delete req.body.settings_draft_val.id;
 
+    models['UserInfo'].saveAllValues(req, function (results1) {
+      console.log(results1);
+    });
   });
+
+  // models['UserInfo'].saveAllValues(req, function (results1) {
+  //   console.log(results1);
+  // });
+  // models['Defaultsettings'].getAllValues(req, function (defaultSet) {
+
+  //   req.body.settings_val = {};
+  //   req.body.settings_val = Object.assign({},defaultSet[0].dataValues);
+  //   req.body.settings_val.EnableDisableNotificationBar = null;
+  //   delete req.body.settings_val.id;
+    
+  //   req.body.settings_draft_val = {};
+  //   req.body.settings_draft_val = Object.assign({},defaultSet[0].dataValues);
+  //   delete req.body.settings_draft_val.id;
+
+  // });
 });
 
 
@@ -166,7 +187,7 @@ router.get('/callback', (req, res) => {
                     "name": "New Plan Test 1111111",
                     "price": 0.01,
                     "return_url": forwardingAddress+"/shopify/recurring_application_charge_return?shop="+shop,
-                    // "test": true,
+                    "test": true,
                     "trial_days":1
                   }
                 };
